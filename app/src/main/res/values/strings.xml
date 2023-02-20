@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">White Sound</string>
+    <string name="txt_agp_btn_nueva_partitura">Nueva partitura</string>
+    <string name="txt_agp_tv_partituras_anteriores">Partituras anteriores</string>
+</resources>
