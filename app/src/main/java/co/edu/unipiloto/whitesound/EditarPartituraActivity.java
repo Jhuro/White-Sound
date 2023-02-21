@@ -15,8 +15,6 @@ import java.io.InputStreamReader;
 
 public class EditarPartituraActivity extends AppCompatActivity {
 
-    public static final String TITULO_PARTITURA = "Título";
-    public static final String AUTOR = "Autor";
     public static final String ARCHIVO = "partitura.wsnd";
 
     @Override
@@ -26,8 +24,6 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
         //Obtener valores intent
         Intent intent = getIntent();
-        //String tituloPartitura = intent.getStringExtra(TITULO_PARTITURA);
-        //String nombreAutor = intent.getStringExtra(AUTOR);
 
         String partitura = "";
         try {

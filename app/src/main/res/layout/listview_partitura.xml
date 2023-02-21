@@ -8,5 +8,6 @@
         android:id="@+id/lp_tv_nombre_archivo_partitura"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:drawableLeft="@drawable/ic_archivo"
         android:gravity="center|start"/>
 </LinearLayout>

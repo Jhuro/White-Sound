@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginTop="32dp"
+    android:layout_marginBottom="32dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginRight="32dp">
+
+
+    <TextView
+        android:id="@+id/pdp_tv_autor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_pdp_tv_autor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/pdp_et_nombre_autor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/txt_pdp_et_nombre_autor"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pdp_tv_autor"
+        app:layout_constraintTop_toBottomOf="@+id/pdp_tv_autor" />
+
+    <TextView
+        android:id="@+id/pdp_tv_titulo_partitura"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_pdp_tv_titulo_partitura"
+        app:layout_constraintStart_toStartOf="@+id/pdp_et_nombre_autor"
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
+
+    <EditText
+        android:id="@+id/pdp_et_nombre_partitura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="@string/txt_pdp_et_nombre_partitura"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/pdp_tv_titulo_partitura"
+        app:layout_constraintTop_toBottomOf="@+id/pdp_tv_titulo_partitura" />
+
+    <Button
+        android:id="@+id/pdp_btn_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/txt_pdp_btn_cancelar"
+        app:layout_constraintEnd_toStartOf="@+id/pdp_btn_aceptar"
+        app:layout_constraintStart_toStartOf="@+id/pdp_et_nombre_partitura"
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
+
+    <Button
+        android:id="@+id/pdp_btn_aceptar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_pdp_btn_aceptar"
+        app:layout_constraintEnd_toEndOf="@+id/pdp_et_nombre_partitura"
+        app:layout_constraintStart_toEndOf="@+id/pdp_btn_cancelar"
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
+</androidx.constraintlayout.widget.ConstraintLayout>
