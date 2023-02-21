@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="100dp"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/lvp_tv_nombre_partitura"
+        android:id="@+id/lp_tv_nombre_archivo_partitura"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
-        android:gravity="center|start"/>
-
-    <TextView
-        android:id="@+id/lvp_tv_nombre_autor"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="50"
+        android:layout_height="match_parent"
         android:gravity="center|start"/>
 </LinearLayout>

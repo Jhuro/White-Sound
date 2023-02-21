@@ -12,9 +12,9 @@ import java.util.List;
 public class AdaptadorListaPartitura extends BaseAdapter {
 
     Context context;
-    List<Partitura> lst;
+    List<String> lst;
 
-    public AdaptadorListaPartitura(Context context, List<Partitura> lst) {
+    public AdaptadorListaPartitura(Context context, List<String> lst) {
         this.context = context;
         this.lst = lst;
     }
@@ -38,19 +38,16 @@ public class AdaptadorListaPartitura extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         TextView nombre;
-        TextView autor;
 
-        Partitura partitura = lst.get(i);
+        String partitura = lst.get(i);
 
         if(view==null) {
             view = LayoutInflater.from(context).inflate(R.layout.listview_partitura, null);
         }
 
-        nombre = (TextView) view.findViewById(R.id.lvp_tv_nombre_partitura);
-        autor = (TextView) view.findViewById(R.id.lvp_tv_nombre_autor);
+        nombre = (TextView) view.findViewById(R.id.lp_tv_nombre_archivo_partitura);
 
-        nombre.setText(partitura.nombre);
-        autor.setText(partitura.autor);
+        nombre.setText(partitura);
 
         return view;
     }

@@ -2,4 +2,10 @@
     <string name="app_name">White Sound</string>
     <string name="txt_agp_btn_nueva_partitura">Nueva partitura</string>
     <string name="txt_agp_tv_partituras_anteriores">Partituras anteriores</string>
+    <string name="txt_pdp_tv_autor">Autor</string>
+    <string name="txt_pdp_et_nombre_autor">Nombre del autor</string>
+    <string name="txt_pdp_tv_titulo_partitura">Título de la partitura</string>
+    <string name="txt_pdp_et_nombre_partitura">Nombre de la partitura</string>
+    <string name="txt_pdp_btn_cancelar">Cancelar</string>
+    <string name="txt_pdp_btn_aceptar">Aceptar</string>
 </resources>
