@@ -4,11 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/clr_e"
     android:layout_gravity="center"
-    android:layout_marginTop="32dp"
-    android:layout_marginBottom="32dp"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp">
+    android:padding="16dp">
 
 
     <TextView
@@ -18,6 +16,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/txt_pdp_tv_autor"
+        android:textColor="@color/clr_a"
+        android:textSize="12pt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +29,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@color/clr_a"
         android:hint="@string/txt_pdp_et_nombre_autor"
+        android:textColorHint="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pdp_tv_autor"
@@ -40,6 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/txt_pdp_tv_titulo_partitura"
+        android:textColor="@color/clr_a"
+        android:textSize="12pt"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/pdp_et_nombre_autor"
         app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
 
@@ -50,7 +58,11 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:ems="10"
+        android:background="@color/clr_a"
         android:hint="@string/txt_pdp_et_nombre_partitura"
+        android:textColorHint="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/pdp_tv_titulo_partitura"
@@ -62,7 +74,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_clr_b"
         android:text="@string/txt_pdp_btn_cancelar"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/pdp_btn_aceptar"
         app:layout_constraintStart_toStartOf="@+id/pdp_et_nombre_partitura"
         app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
@@ -73,7 +89,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:background="@drawable/bg_clr_b"
         android:text="@string/txt_pdp_btn_aceptar"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/pdp_et_nombre_partitura"
         app:layout_constraintStart_toEndOf="@+id/pdp_btn_cancelar"
         app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />

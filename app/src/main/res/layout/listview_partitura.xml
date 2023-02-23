@@ -2,6 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="100dp"
+    android:background="@drawable/bg_clr_d"
+    android:padding="10dp"
     android:orientation="vertical" >
 
     <TextView
@@ -9,5 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:drawableLeft="@drawable/ic_archivo"
+        android:text="@string/txt_lp_tv_nombre_archivo_partitura"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         android:gravity="center|start"/>
 </LinearLayout>

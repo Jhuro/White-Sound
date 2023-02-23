@@ -125,6 +125,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
 
         intent.putExtra(EditarPartituraActivity.ARCHIVO, nombreArchivo);
 
+        cerrarDialogo();
         startActivity(intent);
     }
 
@@ -132,7 +133,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         dialog.dismiss();
     }
 
-    public String guardarPartitura(String tituloPartitura, String autor){
+    private String guardarPartitura(String tituloPartitura, String autor){
 
         //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
         //Asignar nombre del archivo
@@ -168,5 +169,13 @@ public class GestionarPartituraActivity extends AppCompatActivity {
 
         return partituras;
 
+    }
+
+    //Recargar actividad
+    public void onResume() {
+
+        super.onResume();
+        AdaptadorListaPartitura adaptador = new AdaptadorListaPartitura(this, getPartituras());
+        agp_lv_partituras.setAdapter(adaptador);
     }
 }
