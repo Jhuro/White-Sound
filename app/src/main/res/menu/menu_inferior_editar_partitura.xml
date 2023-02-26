@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/miep_notas"
+        android:icon="@drawable/bg_clr_a"
+        android:title="notas"/>
+    <item
+        android:id="@+id/miep_silencios"
+        android:icon="@drawable/bg_clr_a"
+        android:title="silencios"/>
+</menu>

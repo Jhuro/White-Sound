@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/bg_clr_e">
+
+    <ImageView
+        android:id="@+id/lsm_iv_icono_silencio"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:padding="5dp"
+        tools:srcCompat="@drawable/ic_silencio_redonda" />
+
+    <TextView
+        android:id="@+id/lsm_tv_nombre_silencio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Silencio musical"
+        android:textColor="@color/clr_a"
+        android:textSize="8pt"
+        android:textStyle="bold" />
+
+</LinearLayout>
