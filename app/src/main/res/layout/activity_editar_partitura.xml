@@ -9,29 +9,42 @@
 
     <TextView
         android:id="@+id/aep_tv_titulo"
-        android:text="@string/txt_aep_tv_titulo"
-        android:textColor="@color/clr_e"
-        android:textSize="18pt"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
+        android:text="@string/txt_aep_tv_titulo"
+        android:textColor="@color/clr_e"
+        android:textSize="18pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/aep_tv_autor"
-        android:text="@string/txt_aep_tv_autor"
-        android:textColor="@color/clr_e"
-        android:textSize="12pt"
-        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
+        android:text="@string/txt_aep_tv_autor"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aep_tv_titulo" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/aep_menu_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/clr_e"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_inferior_editar_partitura" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
