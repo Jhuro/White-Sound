@@ -22,11 +22,11 @@ import java.util.List;
 
 public class GestionarPartituraActivity extends AppCompatActivity {
 
-    Button agp_btn_crear_partitura;
-    TextView agp_tv_partituras_anteriores;
-    ListView agp_lv_partituras;
-    List<String> partituras;
-    Dialog dialogo;
+    private Button agp_btn_crear_partitura;
+    private TextView agp_tv_partituras_anteriores;
+    private ListView agp_lv_partituras;
+    private List<String> partituras;
+    private Dialog dialogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -258,6 +258,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         recargarListaPartituras();
     }
 
+    //Recargar la lista de partituras en el dispositivo
     public void recargarListaPartituras(){
 
         AdaptadorListaPartitura adaptador = new AdaptadorListaPartitura(this, getPartituras());

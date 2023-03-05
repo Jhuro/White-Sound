@@ -7,7 +7,7 @@
     android:background="@drawable/bg_clr_d">
 
     <ListView
-        android:id="@+id/pfm_lv_figura_musical"
+        android:id="@+id/pee_lv_elementos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"

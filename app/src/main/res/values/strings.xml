@@ -13,4 +13,9 @@
     <string name="txt_aep_tv_autor">Sin autor</string>
     <string name="txt_pap_imgbtn_eliminar_partitura">Eliminar partitura</string>
     <string name="txt_pap_imgbtn_editar_partitura">Editar partitura</string>
+    <string name="txt_miep_figuras_musicales">Figuras musicales, negra</string>
+    <string name="txt_miep_silencios">Silencios, silencio de negra</string>
+    <string name="txt_lsm_tv_nombre_silencio">Silencio musical</string>
+    <string name="txt_lfm_tv_nombre_figura">Figura musical</string>
+    <string name="txt_miep_alteraciones">Alteraciones, sostenido</string>
 </resources>

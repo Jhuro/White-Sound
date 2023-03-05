@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/miep_notas"
-        android:icon="@drawable/bg_clr_a"
-        android:title="notas"/>
+        android:id="@+id/miep_figuras_musicales"
+        android:icon="@drawable/ic_negra"
+        android:title="@string/txt_miep_figuras_musicales"/>
     <item
         android:id="@+id/miep_silencios"
-        android:icon="@drawable/bg_clr_a"
-        android:title="silencios"/>
+        android:icon="@drawable/ic_silencio_negra"
+        android:title="@string/txt_miep_silencios" />
+    <item
+        android:id="@+id/miep_alteraciones"
+        android:icon="@drawable/ic_sostenido"
+        android:title="@string/txt_miep_alteraciones" />
 </menu>

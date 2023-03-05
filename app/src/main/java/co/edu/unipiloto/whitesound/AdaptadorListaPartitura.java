@@ -11,8 +11,8 @@ import java.util.List;
 
 public class AdaptadorListaPartitura extends BaseAdapter {
 
-    Context context;
-    List<String> lst;
+    private Context context;
+    private List<String> lst;
 
     public AdaptadorListaPartitura(Context context, List<String> lst) {
         this.context = context;
