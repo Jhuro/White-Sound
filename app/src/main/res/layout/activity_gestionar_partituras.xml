@@ -7,23 +7,27 @@
     android:background="@color/clr_b"
     tools:context=".GestionarPartituraActivity">
 
+    <include
+        android:id="@+id/agp_toolbar"
+        layout="@layout/toolbar" />
+
     <Button
         android:id="@+id/agp_btn_crear_partitura"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/clr_d"
+        android:drawableLeft="@drawable/ic_nueva_partitura"
+        android:padding="10dp"
         android:text="@string/txt_agp_btn_nueva_partitura"
         android:textColor="@color/clr_e"
         android:textSize="12pt"
         android:textStyle="bold"
-        android:drawableLeft="@drawable/ic_nueva_partitura"
-        android:padding="10dp"
-        android:background="@drawable/bg_clr_d"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/agp_toolbar" />
 
     <TextView
         android:id="@+id/agp_tv_partituras_anteriores"

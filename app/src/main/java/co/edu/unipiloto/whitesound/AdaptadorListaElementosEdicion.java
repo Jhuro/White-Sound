@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class AdaptadorListaSilencio extends BaseAdapter {
+public class AdaptadorListaElementosEdicion extends BaseAdapter {
     private Context context;
     private List<String> lst;
 
-    public AdaptadorListaSilencio(Context context, List<String> lst) {
+    public AdaptadorListaElementosEdicion(Context context, List<String> lst) {
         this.context = context;
         this.lst = lst;
     }
@@ -37,7 +37,7 @@ public class AdaptadorListaSilencio extends BaseAdapter {
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
-        String nombreSilencio = (String) lst.get(i);
+        String nombreElemento = (String) lst.get(i);
 
         if(view==null) {
             view = LayoutInflater.from(context).inflate(R.layout.listview_elementos_edicion, null);
@@ -46,9 +46,33 @@ public class AdaptadorListaSilencio extends BaseAdapter {
         TextView lee_tv_nombre = (TextView) view.findViewById(R.id.lee_tv_nombre);
         ImageView lee_iv_icono = (ImageView) view.findViewById(R.id.lee_iv_icono);
 
-        lee_tv_nombre.setText(nombreSilencio);
+        lee_tv_nombre.setText(nombreElemento);
 
-        switch(nombreSilencio){
+        switch(nombreElemento){
+            case "Redonda":
+                lee_iv_icono.setImageResource(R.drawable.ic_redonda);
+                break;
+            case "Blanca":
+                lee_iv_icono.setImageResource(R.drawable.ic_blanca);
+                break;
+            case "Negra":
+                lee_iv_icono.setImageResource(R.drawable.ic_negra);
+                break;
+            case "Corchea":
+                lee_iv_icono.setImageResource(R.drawable.ic_corchea);
+                break;
+            case "Semicorchea":
+                lee_iv_icono.setImageResource(R.drawable.ic_semicorchea);
+                break;
+            case "Fusa":
+                lee_iv_icono.setImageResource(R.drawable.ic_fusa);
+                break;
+            case "Semifusa":
+                lee_iv_icono.setImageResource(R.drawable.ic_semifusa);
+                break;
+            case "Garrapatea":
+                lee_iv_icono.setImageResource(R.drawable.ic_garrapatea);
+                break;
             case "Silencio de redonda":
                 lee_iv_icono.setImageResource(R.drawable.ic_silencio_redonda);
                 break;
@@ -72,6 +96,13 @@ public class AdaptadorListaSilencio extends BaseAdapter {
                 break;
             case "Silencio de garrapatea":
                 lee_iv_icono.setImageResource(R.drawable.ic_silencio_garrapatea);
+                break;
+            case "Sostenido":
+                lee_iv_icono.setImageResource(R.drawable.ic_sostenido);
+                break;
+            case "Bemol":
+                lee_iv_icono.setImageResource(R.drawable.ic_bemol);
+                break;
         }
 
         return view;

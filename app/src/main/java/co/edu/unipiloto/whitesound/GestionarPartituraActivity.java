@@ -1,12 +1,16 @@
 package co.edu.unipiloto.whitesound;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -14,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -23,6 +28,7 @@ import java.util.List;
 public class GestionarPartituraActivity extends AppCompatActivity {
 
     private Button agp_btn_crear_partitura;
+    private Toolbar toolbar;
     private TextView agp_tv_partituras_anteriores;
     private ListView agp_lv_partituras;
     private List<String> partituras;
@@ -39,6 +45,11 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         agp_lv_partituras = (ListView) findViewById(R.id.agp_lv_partituras);
         dialogo = new Dialog(this);
         dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        toolbar = (Toolbar) findViewById(R.id.agp_toolbar);
+
+        //Toolbar
+        toolbar.setTitle("Inicio");
+        setSupportActionBar(toolbar);
 
         //Cargar la lista de partituras almacenadas en el dispositivo
         recargarListaPartituras();
@@ -269,5 +280,24 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         }else{
             agp_tv_partituras_anteriores.setVisibility(View.INVISIBLE);
         }
+    }
+
+    //Inflar menú del toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return true;
+    }
+
+    //Acciones del toolbar
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mt_ajustes:
+                Intent intent = new Intent(this, AjustesActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

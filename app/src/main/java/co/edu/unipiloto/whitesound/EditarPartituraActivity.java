@@ -2,11 +2,13 @@ package co.edu.unipiloto.whitesound;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,6 +32,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
     private List<String> figurasMusicales;
     private List<String> silenciosMusicales;
     private List<String> alteracionesMusicales;
+    private Toolbar toolbar;
     private Dialog dialogo;
 
     @Override
@@ -57,6 +60,11 @@ public class EditarPartituraActivity extends AppCompatActivity {
         aep_menu_inferior = (BottomNavigationView) findViewById(R.id.aep_menu_inferior);
         dialogo = new Dialog(this);
         dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        toolbar = (Toolbar) findViewById(R.id.aep_toolbar);
+
+        //Toolbar
+        toolbar.setTitle("Editar partitura");
+        setSupportActionBar(toolbar);
 
         //Inicializar textos de partitura
         aep_tv_titulo.setText(tituloPartitura);
@@ -94,7 +102,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
         //Inicializar vistas del diálogo
         ListView pee_lv_elementos = (ListView) dialogo.findViewById(R.id.pee_lv_elementos);
-        AdaptadorListaFigura adaptador = new AdaptadorListaFigura(this, getFiguras());
+        AdaptadorListaElementosEdicion adaptador = new AdaptadorListaElementosEdicion(this, getFiguras());
         pee_lv_elementos.setAdapter(adaptador);
 
         pee_lv_elementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -115,7 +123,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
         //Inicializar vistas del diálogo
         ListView pee_lv_elementos = (ListView) dialogo.findViewById(R.id.pee_lv_elementos);
-        AdaptadorListaSilencio adaptador = new AdaptadorListaSilencio(this, getSilencios());
+        AdaptadorListaElementosEdicion adaptador = new AdaptadorListaElementosEdicion(this, getSilencios());
         pee_lv_elementos.setAdapter(adaptador);
 
         pee_lv_elementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -127,6 +135,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
         });
     }
 
+    //Diálogo para elegir una alteracion musical
     private void abrirDialogoAlteraciones(MenuItem item) {
 
         //Mostrar diálogo
@@ -135,7 +144,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
         //Inicializar vistas del diálogo
         ListView pee_lv_elementos = (ListView) dialogo.findViewById(R.id.pee_lv_elementos);
-        AdaptadorListaAlteracion adaptador = new AdaptadorListaAlteracion(this, getAlteraciones());
+        AdaptadorListaElementosEdicion adaptador = new AdaptadorListaElementosEdicion(this, getAlteraciones());
         pee_lv_elementos.setAdapter(adaptador);
 
         pee_lv_elementos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -310,5 +319,24 @@ public class EditarPartituraActivity extends AppCompatActivity {
         }
 
         return archivoCompleto;
+    }
+
+    //Inflar menú del toolbar
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        return true;
+    }
+
+    //Acciones del toolbar
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.mt_ajustes:
+                Intent intent = new Intent(this, AjustesActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
