@@ -1,6 +1,5 @@
-package co.edu.unipiloto.whitesound;
+package co.edu.unipiloto.whitesound.actividades;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -18,12 +17,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import co.edu.unipiloto.whitesound.R;
+import co.edu.unipiloto.whitesound.adaptadores.AdaptadorListaPartitura;
 
 public class GestionarPartituraActivity extends AppCompatActivity {
 
@@ -204,6 +205,13 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         //Asignar nombre del archivo
         String nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s","_") + ".wsnd";
 
+        //Agregar sufijo si existe un archivo con el mismo nombre
+        int sufijoNombre = 2;
+        while(partituras.contains(nombreArchivo)){
+            nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s","_") + "_" + sufijoNombre +  ".wsnd";
+            sufijoNombre++;
+        }
+
         String contenido = tituloPartitura.replaceAll("\\s","_") + " "
                 + autor.replaceAll("\\s", "_");
 
@@ -286,6 +294,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        menu.findItem(R.id.mt_guardar).setVisible(false);
         return true;
     }
 
@@ -296,6 +305,9 @@ public class GestionarPartituraActivity extends AppCompatActivity {
             case R.id.mt_ajustes:
                 Intent intent = new Intent(this, AjustesActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.mt_info:
+
                 break;
         }
         return super.onOptionsItemSelected(item);

@@ -2,9 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/mt_guardar"
+        android:title="Guardar"
+        android:contentDescription="Guardar"
+        android:icon="@drawable/ic_guardar"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/mt_info"
+        android:title="Información"
+        android:contentDescription="Información"
+        android:icon="@drawable/ic_informacion"
+        app:showAsAction="ifRoom"/>
+    <item
         android:id="@+id/mt_ajustes"
         android:title="@string/txt_mt_ajustes"
         android:contentDescription="@string/txt_mt_ajustes"
         android:icon="@drawable/ic_ajustes"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 </menu>

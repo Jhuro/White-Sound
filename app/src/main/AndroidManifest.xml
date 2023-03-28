@@ -12,13 +12,13 @@
         android:theme="@style/Theme.WhiteSound"
         tools:targetApi="31">
         <activity
-            android:name=".AjustesActivity"
+            android:name=".actividades.AjustesActivity"
             android:exported="false" />
         <activity
-            android:name=".EditarPartituraActivity"
+            android:name=".actividades.EditarPartituraActivity"
             android:exported="false" />
         <activity
-            android:name=".GestionarPartituraActivity"
+            android:name=".actividades.GestionarPartituraActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

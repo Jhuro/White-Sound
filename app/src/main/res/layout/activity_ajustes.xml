@@ -5,20 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/clr_b"
-    tools:context=".AjustesActivity">
+    tools:context=".actividades.AjustesActivity">
 
-    <TextView
-        android:id="@+id/aa_tv_titulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="Ajustes"
-        android:textColor="@color/clr_e"
-        android:textSize="18pt"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <include
+        android:id="@+id/aa_toolbar"
+        layout="@layout/toolbar"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

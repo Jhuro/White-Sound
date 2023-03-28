@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/clr_b"
-    tools:context=".EditarPartituraActivity">
+    tools:context=".actividades.EditarPartituraActivity">
 
     <include
         android:id="@+id/aep_toolbar"
-        layout="@layout/toolbar" />
+        layout="@layout/toolbar"
+        />
 
-    <TextView
-        android:id="@+id/aep_tv_titulo"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/aep_et_titulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
@@ -21,13 +22,15 @@
         android:textColor="@color/clr_e"
         android:textSize="18pt"
         android:textStyle="bold"
+        android:background="@null"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aep_toolbar" />
 
-    <TextView
-        android:id="@+id/aep_tv_autor"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/aep_et_autor"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
@@ -35,9 +38,11 @@
         android:textColor="@color/clr_e"
         android:textSize="12pt"
         android:textStyle="bold"
+        android:background="@null"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/aep_tv_titulo" />
+        app:layout_constraintTop_toBottomOf="@+id/aep_et_titulo" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/aep_menu_inferior"

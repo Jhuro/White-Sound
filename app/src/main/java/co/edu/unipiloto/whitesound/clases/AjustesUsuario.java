@@ -1,4 +1,4 @@
-package co.edu.unipiloto.whitesound;
+package co.edu.unipiloto.whitesound.clases;
 
 import android.app.Application;
 

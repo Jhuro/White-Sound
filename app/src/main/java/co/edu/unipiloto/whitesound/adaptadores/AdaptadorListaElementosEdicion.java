@@ -1,4 +1,4 @@
-package co.edu.unipiloto.whitesound;
+package co.edu.unipiloto.whitesound.adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import co.edu.unipiloto.whitesound.R;
 
 public class AdaptadorListaElementosEdicion extends BaseAdapter {
     private Context context;

@@ -1,10 +1,11 @@
-package co.edu.unipiloto.whitesound;
+package co.edu.unipiloto.whitesound.actividades;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,28 +13,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unipiloto.whitesound.R;
+import co.edu.unipiloto.whitesound.adaptadores.AdaptadorListaElementosEdicion;
+
 public class EditarPartituraActivity extends AppCompatActivity {
 
     public static final String ARCHIVO = "partitura.wsnd";
     private BottomNavigationView aep_menu_inferior;
-    private List<String> figurasMusicales;
-    private List<String> silenciosMusicales;
-    private List<String> alteracionesMusicales;
+    private List<String> figurasMusicales, silenciosMusicales, alteracionesMusicales;
+    private EditText aep_et_titulo, aep_et_autor;
     private Toolbar toolbar;
     private Dialog dialogo;
+    private String archivoPartitura;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
         String partitura = "";
         try {
             partitura = contenidoArchivoPartitura(intent.getStringExtra(ARCHIVO));
+            archivoPartitura = intent.getStringExtra(ARCHIVO);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,8 +64,8 @@ public class EditarPartituraActivity extends AppCompatActivity {
         String nombreAutor = datos[1].replace("_", " ");
 
         //Inicializar vistas
-        TextView aep_tv_titulo = (TextView) findViewById(R.id.aep_tv_titulo);
-        TextView aep_tv_autor = (TextView) findViewById(R.id.aep_tv_autor);
+        aep_et_titulo = (EditText) findViewById(R.id.aep_et_titulo);
+        aep_et_autor = (EditText) findViewById(R.id.aep_et_autor);
         aep_menu_inferior = (BottomNavigationView) findViewById(R.id.aep_menu_inferior);
         dialogo = new Dialog(this);
         dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -67,9 +76,11 @@ public class EditarPartituraActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Inicializar textos de partitura
-        aep_tv_titulo.setText(tituloPartitura);
-        aep_tv_autor.setText(nombreAutor);
+        aep_et_titulo.setText(tituloPartitura);
+        aep_et_autor.setText(nombreAutor);
 
+
+        //aep_et_titulo.addTextChangedListener();
         //Menu inferior
         aep_menu_inferior.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -328,6 +339,75 @@ public class EditarPartituraActivity extends AppCompatActivity {
         return true;
     }
 
+    //Guardar una partitura
+    private void guardarPartitura(){
+
+        //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
+        String nombreArchivo = aep_et_titulo.getText().toString().trim().toLowerCase().replaceAll("\\s","_") + ".wsnd";
+
+        String contenido = aep_et_titulo.getText().toString().replaceAll("\\s","_") + " "
+                + aep_et_autor.getText().toString().replaceAll("\\s", "_");
+
+        //Renombrar el archivo de partitura en caso de cambiar el título
+        if(!archivoPartitura.equals(nombreArchivo)){
+            //Agregar sufijo si existe un archivo con el mismo nombre
+            int sufijoNombre = 2;
+            while(nombreRepetido(nombreArchivo)){
+                nombreArchivo = aep_et_titulo.getText().toString().trim().toLowerCase().replaceAll("\\s","_") + "_" + sufijoNombre + ".wsnd";
+                sufijoNombre++;
+            }
+
+            //Descartar archivos con sufijos para renombrar
+            if(!archivoPartitura.equals(nombreArchivo)) {
+                File archivoActual = new File(getFilesDir(), archivoPartitura);
+                File nuevoArchivo = new File(getFilesDir(), nombreArchivo);
+
+                if (archivoActual.renameTo(nuevoArchivo)) {
+                    archivoPartitura = nombreArchivo;
+                    Toast.makeText(this, "Renombrado", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "No renombrado", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }else{
+            //Asignar nombre del archivo
+            nombreArchivo = archivoPartitura;
+        }
+
+        //Inicializar output stream
+        FileOutputStream outputStream;
+
+        //Escribir contenido de la partitura en el archivo
+        try {
+            outputStream = openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
+            outputStream.write(contenido.getBytes());
+            outputStream.flush();
+            outputStream.close();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private boolean nombreRepetido(String nombre) {
+
+        //Recuperar todos los archivos de partituras que se han guardado
+        File[] archivos = getFilesDir().listFiles();
+
+        //Añadir el nombre de los archivos a la lista partituras
+        for(File archivo : archivos ){
+            //Saltar el archivo que se esta editando
+            if(archivoPartitura.equals(archivo.getName())){
+                continue;
+            }
+            if(nombre.equals(archivo.getName())){
+                return true;
+            }
+        }
+
+        return false;
+
+    }
+
     //Acciones del toolbar
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -335,6 +415,12 @@ public class EditarPartituraActivity extends AppCompatActivity {
             case R.id.mt_ajustes:
                 Intent intent = new Intent(this, AjustesActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.mt_info:
+
+                break;
+            case R.id.mt_guardar:
+                guardarPartitura();
                 break;
         }
         return super.onOptionsItemSelected(item);
