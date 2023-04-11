@@ -8,9 +8,10 @@
 
     <ImageView
         android:id="@+id/lee_iv_icono"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:padding="5dp"
+        android:layout_gravity="center"
         tools:srcCompat="@drawable/ic_redonda" />
 
     <TextView

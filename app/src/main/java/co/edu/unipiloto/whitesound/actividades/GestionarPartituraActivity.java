@@ -7,10 +7,12 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,11 +22,13 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import co.edu.unipiloto.whitesound.R;
 import co.edu.unipiloto.whitesound.adaptadores.AdaptadorListaPartitura;
+import co.edu.unipiloto.whitesound.clases.Partitura;
 
 public class GestionarPartituraActivity extends AppCompatActivity {
 
@@ -38,6 +42,10 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT > 16) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
         setContentView(R.layout.activity_gestionar_partituras);
 
         //Inicializar vistas
@@ -198,7 +206,6 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //Guardar una partitura
     private void guardarPartitura(String tituloPartitura, String autor){
 
         //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
@@ -212,17 +219,12 @@ public class GestionarPartituraActivity extends AppCompatActivity {
             sufijoNombre++;
         }
 
-        String contenido = tituloPartitura.replaceAll("\\s","_") + " "
-                + autor.replaceAll("\\s", "_");
-
-        //Inicializar output stream
-        FileOutputStream outputStream;
-
         //Escribir contenido de la partitura en el archivo
         try {
-            outputStream = openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
-            outputStream.write(contenido.getBytes());
-            outputStream.flush();
+            FileOutputStream outputStream = openFileOutput(nombreArchivo, Context.MODE_PRIVATE);
+            ObjectOutputStream out = new ObjectOutputStream(outputStream);
+            out.writeObject(new Partitura(tituloPartitura, autor));
+            out.close();
             outputStream.close();
         }catch(Exception e){
             e.printStackTrace();
