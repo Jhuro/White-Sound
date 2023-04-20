@@ -14,4 +14,8 @@
         android:id="@+id/miep_alteraciones"
         android:icon="@drawable/ic_sostenido"
         android:title="@string/txt_miep_alteraciones" />
+    <item
+        android:id="@+id/miep_borrar"
+        android:icon="@drawable/ic_eliminar_nota"
+        android:title="Eliminar nota" />
 </menu>

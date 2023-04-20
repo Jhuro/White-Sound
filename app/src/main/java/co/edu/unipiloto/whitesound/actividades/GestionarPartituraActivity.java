@@ -21,7 +21,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private TextView agp_tv_partituras_anteriores;
     private ListView agp_lv_partituras;
-    private List<String> partituras;
+    private List<String> archivos;
     private Dialog dialogo;
 
     @Override
@@ -166,12 +168,12 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         String nombrePartitura = pdp_et_nombre_partitura.getText().toString();
 
         //Caso en el que no se pone un autor
-        if(nombreAutor.length()==0){
+        if (nombreAutor.length() == 0) {
             nombreAutor = "Sin autor";
         }
 
         //Caso en que no se pone título a la partitura
-        if(nombrePartitura.length()==0){
+        if (nombrePartitura.length() == 0) {
             nombrePartitura = "Sin título";
         }
 
@@ -189,15 +191,15 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         String nombreArchivo = "";
 
         //Asignar nombre del archvio de partitura que se va a editar
-        if(i>=0){
-            nombreArchivo = partituras.get(i);
+        if (i >= 0) {
+            nombreArchivo = archivos.get(i);
         } else {
-            nombreArchivo = partituras.get(partituras.size()-1);
+            nombreArchivo = archivos.get(archivos.size() - 1);
         }
 
         //Inicializar el intent de la actividad editor de partitura
         Intent intent = new Intent(this, EditarPartituraActivity.class);
-        intent.putExtra(EditarPartituraActivity.ARCHIVO,nombreArchivo);
+        intent.putExtra(EditarPartituraActivity.ARCHIVO, nombreArchivo);
 
         //Cerrar el diálogo para crear una nueva partitura
         cerrarDialogo();
@@ -206,16 +208,16 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void guardarPartitura(String tituloPartitura, String autor){
+    private void guardarPartitura(String tituloPartitura, String autor) {
 
         //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
         //Asignar nombre del archivo
-        String nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s","_") + ".wsnd";
+        String nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s", "_") + ".wsnd";
 
         //Agregar sufijo si existe un archivo con el mismo nombre
         int sufijoNombre = 2;
-        while(partituras.contains(nombreArchivo)){
-            nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s","_") + "_" + sufijoNombre +  ".wsnd";
+        while (archivos.contains(nombreArchivo)) {
+            nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s", "_") + "_" + sufijoNombre + ".wsnd";
             sufijoNombre++;
         }
 
@@ -226,7 +228,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
             out.writeObject(new Partitura(tituloPartitura, autor));
             out.close();
             outputStream.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -235,10 +237,10 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     }
 
     //Eliminar una partitura
-    private void eliminarPartitura(int i){
+    private void eliminarPartitura(int i) {
 
         //Inicializar nombre del archivo de partitura a eliminar
-        String nombreArchivo = partituras.get(i);
+        String nombreArchivo = archivos.get(i);
 
         //Obtener archivo que se desea eliminar
         File archivoPartitura = new File(getFilesDir(), nombreArchivo);
@@ -256,19 +258,28 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     //**** OTRAS FUNCIONES ****
 
     //Obtener lista de partituras
-    private List<String> getPartituras() {
+    private List<Partitura> getPartituras() {
 
         //Recuperar todos los archivos de partituras que se han guardado
         File[] archivos = getFilesDir().listFiles();
-        partituras = new ArrayList<>();
+        this.archivos = new ArrayList<>();
 
+        ArrayList partituras = new ArrayList<Partitura>();
         //Añadir el nombre de los archivos a la lista partituras
-        for(File archivo : archivos ){
-            partituras.add(archivo.getName());
+        try {
+            for (File archivo : archivos) {
+                this.archivos.add(archivo.getName());
+                FileInputStream fileInputStream = new FileInputStream(archivo);
+                ObjectInputStream objInputStream = new ObjectInputStream(fileInputStream);
+                partituras.add(objInputStream.readObject());
+                objInputStream.close();
+                fileInputStream.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return partituras;
-
     }
 
     //Recargar actividad
@@ -280,14 +291,14 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     }
 
     //Recargar la lista de partituras en el dispositivo
-    public void recargarListaPartituras(){
+    public void recargarListaPartituras() {
 
         AdaptadorListaPartitura adaptador = new AdaptadorListaPartitura(this, getPartituras());
         agp_lv_partituras.setAdapter(adaptador);
 
-        if (!partituras.isEmpty()) {
+        if (!archivos.isEmpty()) {
             agp_tv_partituras_anteriores.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             agp_tv_partituras_anteriores.setVisibility(View.INVISIBLE);
         }
     }
@@ -295,7 +306,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     //Inflar menú del toolbar
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_toolbar,menu);
+        getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         menu.findItem(R.id.mt_guardar).setVisible(false);
         return true;
     }
@@ -303,7 +314,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     //Acciones del toolbar
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.mt_ajustes:
                 Intent intent = new Intent(this, AjustesActivity.class);
                 startActivity(intent);

@@ -105,6 +105,9 @@ public class AdaptadorListaElementosEdicion extends BaseAdapter {
             case "Bemol":
                 lee_iv_icono.setImageResource(R.drawable.ic_bemol);
                 break;
+            case "Sin alteración":
+                lee_iv_icono.setImageResource(R.drawable.ic_sin_alteracion);
+                break;
         }
 
         return view;

@@ -77,6 +77,7 @@ public class ListaDE implements Iterable, Serializable {
             } else {
                 first.prev = null;
             }
+            size--;
             return;
         }
         Node current = first;
@@ -91,6 +92,7 @@ public class ListaDE implements Iterable, Serializable {
         if (current == last) {
             last = last.prev;
             last.next = null;
+            size--;
             return;
         }
         current.prev.next = current.next;

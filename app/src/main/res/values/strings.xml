@@ -19,4 +19,6 @@
     <string name="txt_lfm_tv_nombre_figura">Figura musical</string>
     <string name="txt_miep_alteraciones">Alteraciones, sostenido</string>
     <string name="txt_mt_ajustes">Ajustes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,14 +12,14 @@
         android:id="@+id/pdp_tv_autor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/txt_pdp_tv_autor"
         android:textColor="@color/clr_a"
-        android:textSize="14pt"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
 
     <EditText
         android:id="@+id/pdp_et_nombre_autor"
@@ -31,7 +31,7 @@
         android:hint="@string/txt_pdp_et_nombre_autor"
         android:inputType="textPersonName"
         android:textColorHint="@color/clr_e"
-        android:textSize="14pt"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,14 +41,14 @@
         android:id="@+id/pdp_tv_titulo_partitura"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/txt_pdp_tv_titulo_partitura"
         android:textColor="@color/clr_a"
-        android:textSize="14pt"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/pdp_et_nombre_partitura"
@@ -60,7 +60,7 @@
         android:hint="@string/txt_pdp_et_nombre_partitura"
         android:inputType="textPersonName"
         android:textColorHint="@color/clr_e"
-        android:textSize="14pt"
+        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -79,7 +79,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/pdp_btn_aceptar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
 
     <Button
         android:id="@+id/pdp_btn_aceptar"
@@ -94,5 +94,5 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/pdp_btn_cancelar"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
+        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
 </androidx.constraintlayout.widget.ConstraintLayout>
