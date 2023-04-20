@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/clr_b"
+    tools:context=".fragmentos.EdicionFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_modo_lectura"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Cambiar a modo lectura"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_lectura"
+            app:layout_constraintBottom_toBottomOf="@+id/fe_et_autor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fe_et_titulo" />
+
+        <EditText
+            android:id="@+id/fe_et_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="Título de partitura"
+            android:inputType="textPersonName"
+            android:text="@string/txt_aep_tv_titulo"
+            android:textColor="@color/clr_e"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_modo_lectura"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/fe_et_autor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:background="@null"
+            android:gravity="center"
+            android:hint="Autor de partitura"
+            android:inputType="textPersonName"
+            android:text="@string/txt_aep_tv_autor"
+            android:textColor="@color/clr_e"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_modo_lectura"
+            app:layout_constraintTop_toBottomOf="@+id/fe_et_titulo" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/fe_menu_inferior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/clr_e"
+            app:itemIconSize="40dp"
+            app:itemIconTint="@color/clr_a"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu_inferior_editar_partitura" />
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_desplazar_izq"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Desplazar a la izquierda."
+            android:padding="10dp"
+            android:rotation="-180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_desplazar"
+            app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fe_imgbtn_desplazar_der"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_desplazar_der"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Desplazar a la derecha."
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_desplazar"
+            app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fe_imgbtn_subir_altura"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_desplazar_izq" />
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_subir_altura"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Subir altura."
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_altura"
+            app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fe_imgbtn_bajar_altura"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_desplazar_der" />
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_bajar_altura"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Bajar altura."
+            android:padding="10dp"
+            android:rotation="180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_altura"
+            app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fe_imgbtn_añadir_nota"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_subir_altura" />
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_añadir_nota"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Añadir negra"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_negra"
+            app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_bajar_altura" />
+
+        <TextView
+            android:id="@+id/fe_tv_nota"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nota"
+            android:textAlignment="center"
+            android:textColor="@color/clr_e"
+            android:textSize="18pt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fe_imgbtn_subir_altura"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fe_et_autor" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/edicionFragment">
+
+    <fragment
+        android:id="@+id/edicionFragment"
+        android:name="co.edu.unipiloto.whitesound.fragmentos.EdicionFragment"
+        android:label="fragment_edicion"
+        tools:layout="@layout/fragment_edicion" >
+        <action
+            android:id="@+id/action_edicionFragment_to_lecturaFragment"
+            app:destination="@id/lecturaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/lecturaFragment"
+        android:name="co.edu.unipiloto.whitesound.fragmentos.LecturaFragment"
+        android:label="fragment_lectura"
+        tools:layout="@layout/fragment_lectura" >
+        <action
+            android:id="@+id/action_lecturaFragment_to_edicionFragment"
+            app:destination="@id/edicionFragment" />
+    </fragment>
+</navigation>

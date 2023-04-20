@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_clr_d"
+    android:padding="5dp">
+
+    <ImageView
+        android:id="@+id/lee_iv_icono"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:src="@drawable/ic_archivo_partitura"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lp_tv_titulo_partitura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:gravity="center|start"
+        android:text="Titulo"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lp_tv_por"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lee_iv_icono"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lp_tv_autor_partitura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center|start"
+        android:text="Autor"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lp_tv_por"
+        app:layout_constraintTop_toBottomOf="@+id/lp_tv_titulo_partitura" />
+
+    <TextView
+        android:id="@+id/lp_tv_por"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginBottom="2dp"
+        android:gravity="center|start"
+        android:text="Por:"
+        android:textColor="@color/clr_e"
+        android:textSize="12pt"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/lp_tv_autor_partitura"
+        app:layout_constraintStart_toEndOf="@+id/lee_iv_icono"
+        app:layout_constraintTop_toBottomOf="@+id/lp_tv_titulo_partitura" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

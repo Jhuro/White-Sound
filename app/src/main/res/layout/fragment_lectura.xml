@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/clr_b"
+    tools:context=".fragmentos.LecturaFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/fe_imgbtn_modo_edicion"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Cambiar a modo edición"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_editar_partitura"
+            app:tint="@color/clr_a"
+            app:layout_constraintBottom_toBottomOf="@+id/fl_tv_autor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/fl_tv_titulo" />
+
+        <TextView
+            android:id="@+id/fl_tv_titulo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="@string/txt_aep_tv_titulo"
+            android:textColor="@color/clr_e"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_modo_edicion"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/fl_tv_autor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="4dp"
+            android:gravity="center"
+            android:text="@string/txt_aep_tv_autor"
+            android:textColor="@color/clr_e"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fe_imgbtn_modo_edicion"
+            app:layout_constraintTop_toBottomOf="@+id/fl_tv_titulo" />
+
+        <ImageButton
+            android:id="@+id/fl_imgbtn_desplazar_izq"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Desplazar a la izquierda."
+            android:padding="10dp"
+            android:rotation="-180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_desplazar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn_desplazar_der"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/fl_imgbtn_desplazar_der"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Desplazar a la derecha."
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_desplazar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn1"
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_desplazar_izq" />
+
+        <ImageButton
+            android:id="@+id/fl_imgbtn1"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Reproducir partitura"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_reproducir"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn2"
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_desplazar_der" />
+
+        <ImageButton
+            android:id="@+id/fl_imgbtn2"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Pausar Reproducción"
+            android:padding="10dp"
+            android:rotation="180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_pausar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn3"
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn1" />
+
+        <ImageButton
+            android:id="@+id/fl_imgbtn3"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="Detener Reproducción"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_detener"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn2"/>
+
+        <TextView
+            android:id="@+id/fl_tv_nota"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Nota"
+            android:textAlignment="center"
+            android:textColor="@color/clr_e"
+            android:textSize="18pt"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fl_imgbtn1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fl_tv_autor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
