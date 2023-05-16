@@ -2,8 +2,6 @@ package co.edu.unipiloto.whitesound.fragmentos;
 
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
-import android.media.AudioAttributes;
-import android.media.SoundPool;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,8 +45,6 @@ public class EdicionFragment extends Fragment {
     private ListaDE partituraLDE;
     private boolean nuevaNota;
     private int alturaIndex, duracionIndex, alteracionIndex, elementoIndex, partituraIndex;
-    private SoundPool sp;
-    private int nota_a, nota_b, nota_c, nota_d, nota_e, nota_f, nota_g;
 
     //Constructor vacio obligatorio
     public EdicionFragment() {
@@ -69,26 +65,7 @@ public class EdicionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        initSoundPool();
         initViews(view);
-    }
-
-    private void initSoundPool(){
-        AudioAttributes audioAttributes = new AudioAttributes.Builder()
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .setUsage(AudioAttributes.USAGE_MEDIA)
-                .build();
-        sp = new SoundPool.Builder()
-                .setMaxStreams(1)
-                .setAudioAttributes(audioAttributes)
-                .build();
-        nota_a = sp.load(getContext(), R.raw.a, 1);
-        nota_b = sp.load(getContext(), R.raw.b, 1);
-        nota_c = sp.load(getContext(), R.raw.c, 1);
-        nota_d = sp.load(getContext(), R.raw.d, 1);
-        nota_e = sp.load(getContext(), R.raw.e, 1);
-        nota_f = sp.load(getContext(), R.raw.f, 1);
-        nota_g = sp.load(getContext(), R.raw.g, 1);
     }
 
     public void initViews(View view){
@@ -409,7 +386,7 @@ public class EdicionFragment extends Fragment {
             }
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
         }
-        reproducirNota(alturaIndex);
+        ((EditarPartituraActivity) getActivity()).reproducirNota(alturaIndex, 2);
     }
 
     public void bajarAltura(){
@@ -426,7 +403,7 @@ public class EdicionFragment extends Fragment {
             }
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
         }
-        reproducirNota(alturaIndex);
+        ((EditarPartituraActivity) getActivity()).reproducirNota(alturaIndex, 2);
     }
 
     public void desplazarIzquierda(){
@@ -592,32 +569,6 @@ public class EdicionFragment extends Fragment {
         altura.add("Sol");
         altura.add("La");
         altura.add("Si");
-    }
-
-    public void reproducirNota(int nota){
-        switch (nota){
-            case 0:
-                sp.play(nota_c, 1, 1, 1, 0, 1.0f);
-                break;
-            case 1:
-                sp.play(nota_d, 1, 1, 1, 0, 1.0f);
-                break;
-            case 2:
-                sp.play(nota_e, 1, 1, 1, 0, 1.0f);
-                break;
-            case 3:
-                sp.play(nota_f, 1, 1, 1, 0, 1.0f);
-                break;
-            case 4:
-                sp.play(nota_g, 1, 1, 1, 0, 1.0f);
-                break;
-            case 5:
-                sp.play(nota_a, 1, 1, 1, 0, 1.0f);
-                break;
-            case 6:
-                sp.play(nota_b, 1, 1, 1, 0, 1.0f);
-                break;
-        }
     }
 
     public Partitura getPartitura() {

@@ -88,11 +88,11 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_desplazar"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn1"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn_reproducir"
             app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_desplazar_izq" />
 
         <ImageButton
-            android:id="@+id/fl_imgbtn1"
+            android:id="@+id/fl_imgbtn_reproducir"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
@@ -104,11 +104,11 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_reproducir"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn2"
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn_pausar"
             app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_desplazar_der" />
 
         <ImageButton
-            android:id="@+id/fl_imgbtn2"
+            android:id="@+id/fl_imgbtn_pausar"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
@@ -121,11 +121,11 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_pausar"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn3"
-            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn1" />
+            app:layout_constraintEnd_toStartOf="@+id/fl_imgbtn_detener"
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_reproducir" />
 
         <ImageButton
-            android:id="@+id/fl_imgbtn3"
+            android:id="@+id/fl_imgbtn_detener"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
@@ -138,7 +138,7 @@
             android:src="@drawable/ic_detener"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn2"/>
+            app:layout_constraintStart_toEndOf="@+id/fl_imgbtn_pausar"/>
 
         <TextView
             android:id="@+id/fl_tv_nota"
@@ -149,7 +149,7 @@
             android:textColor="@color/clr_e"
             android:textSize="18pt"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/fl_imgbtn1"
+            app:layout_constraintBottom_toTopOf="@+id/fl_imgbtn_reproducir"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fl_tv_autor" />
