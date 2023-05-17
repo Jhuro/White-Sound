@@ -66,6 +66,27 @@ public class EdicionFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initViews(view);
+
+        if(savedInstanceState != null) {
+            partituraIndex = savedInstanceState.getInt("partituraIndex");
+            nuevaNota = savedInstanceState.getBoolean("nuevaNota");
+            if(!partituraLDE.isEmpty() && !nuevaNota){
+                if (!partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()) {
+                    alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
+                }
+                fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            }else{
+                fe_tv_nota.setText("Agregar nota");
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("partituraIndex", partituraIndex);
+        outState.putBoolean("nuevaNota", nuevaNota);
     }
 
     public void initViews(View view){
@@ -148,6 +169,8 @@ public class EdicionFragment extends Fragment {
         fe_imgbtn_modo_lectura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                partitura.setTitulo(fe_et_titulo.getText().toString());
+                partitura.setAutor(fe_et_autor.getText().toString());
                 ((EditarPartituraActivity)getActivity()).setPartituraTemp(partitura);
                 navController.navigate(R.id.lecturaFragment);
             }

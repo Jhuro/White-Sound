@@ -55,6 +55,31 @@ public class LecturaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initViews(view);
+
+        if (savedInstanceState != null){
+            partituraIndex = savedInstanceState.getInt("partituraIndex");
+
+            if (partituraLDE.isEmpty()) {
+                fl_tv_nota.setText("Partitura vacía");
+            } else {
+                Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
+                fl_tv_nota.setText(nota.toString());
+            }
+
+            reproduccion = savedInstanceState.getBoolean("reproduccion");
+
+            if(reproduccion){
+                reproducirPartitura();
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt("partituraIndex", partituraIndex);
+        outState.putBoolean("reproduccion", reproduccion);
     }
 
     public void initViews(View view) {
@@ -88,10 +113,11 @@ public class LecturaFragment extends Fragment {
         if (partituraLDE.isEmpty()) {
             fl_tv_nota.setText("Partitura vacía");
         } else {
-            fl_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
+            fl_tv_nota.setText(nota.toString());
             ((EditarPartituraActivity) getActivity()).reproducirNota(
-                    altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura()),
-                    figurasMusicales.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getDuracion()));
+                    altura.indexOf(nota.getAltura()),
+                    figurasMusicales.indexOf(nota.getDuracion()));
         }
 
         fl_imgbtn_desplazar_izq.setOnClickListener(new View.OnClickListener() {
@@ -188,6 +214,7 @@ public class LecturaFragment extends Fragment {
 
         if (reproduccion && partituraIndex == partituraLDE.getSize() - 1) {
             reproduccion = false;
+            fl_imgbtn_reproducir.setEnabled(true);
             fl_imgbtn_desplazar_izq.setEnabled(true);
             fl_imgbtn_desplazar_der.setEnabled(true);
         }
@@ -197,6 +224,7 @@ public class LecturaFragment extends Fragment {
 
         if (!partituraLDE.isEmpty()) {
             reproduccion = true;
+            fl_imgbtn_reproducir.setEnabled(false);
             fl_imgbtn_desplazar_der.setEnabled(false);
             fl_imgbtn_desplazar_izq.setEnabled(false);
 
@@ -223,6 +251,7 @@ public class LecturaFragment extends Fragment {
     public void pausarPartitura(){
         ((EditarPartituraActivity) getActivity()).pausarReproduccion();
         reproduccion = false;
+        fl_imgbtn_reproducir.setEnabled(true);
         fl_imgbtn_desplazar_izq.setEnabled(true);
         fl_imgbtn_desplazar_der.setEnabled(true);
     }
@@ -230,6 +259,7 @@ public class LecturaFragment extends Fragment {
     public void detenerPartitura(){
         ((EditarPartituraActivity) getActivity()).pausarReproduccion();
         reproduccion = false;
+        fl_imgbtn_reproducir.setEnabled(true);
         fl_imgbtn_desplazar_izq.setEnabled(true);
         fl_imgbtn_desplazar_der.setEnabled(true);
 

@@ -1,11 +1,13 @@
 package co.edu.unipiloto.whitesound.actividades;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Build;
@@ -47,6 +49,28 @@ public class EditarPartituraActivity extends AppCompatActivity {
         }
         initSoundPlayer();
         initActivity();
+
+        if(savedInstanceState != null){
+            archivoPartitura = savedInstanceState.getString("archivoPartitura");
+            partitura = (Partitura) savedInstanceState.getSerializable("partitura");
+            partituraTemp = (Partitura) savedInstanceState.getSerializable("partituraTemp");
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("archivoPartitura", archivoPartitura);
+        outState.putSerializable("partitura", partitura);
+        outState.putSerializable("partituraTemp", partituraTemp);
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        handler.removeCallbacksAndMessages(null);
     }
 
     private void initSoundPlayer() {
