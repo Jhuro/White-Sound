@@ -45,7 +45,7 @@
         android:backgroundTint="@color/clr_b"
         android:text="@string/txt_pdp_btn_cancelar"
         android:textColor="@color/clr_e"
-        android:textSize="12pt"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

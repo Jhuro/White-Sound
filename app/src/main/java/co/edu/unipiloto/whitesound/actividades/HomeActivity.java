@@ -3,11 +3,11 @@ package co.edu.unipiloto.whitesound.actividades;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,31 +33,28 @@ import co.edu.unipiloto.whitesound.R;
 import co.edu.unipiloto.whitesound.adaptadores.AdaptadorListaPartitura;
 import co.edu.unipiloto.whitesound.clases.Partitura;
 
-public class GestionarPartituraActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    private Button agp_btn_crear_partitura;
-    private Toolbar toolbar;
-    private TextView agp_tv_partituras_anteriores;
-    private ListView agp_lv_partituras;
+    private TextView ah_tv_partituras_anteriores;
+    private ListView ah_lv_partituras;
     private List<String> archivos;
     private Dialog dialogo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (Build.VERSION.SDK_INT > 16) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-        setContentView(R.layout.activity_gestionar_partituras);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_home);
 
         //Inicializar vistas
-        agp_btn_crear_partitura = (Button) findViewById(R.id.agp_btn_crear_partitura);
-        agp_tv_partituras_anteriores = (TextView) findViewById(R.id.agp_tv_partituras_anteriores);
-        agp_lv_partituras = (ListView) findViewById(R.id.agp_lv_partituras);
+        Button ah_btn_crear_partitura = findViewById(R.id.ah_btn_crear_partitura);
+        Button ah_btn_juegos = findViewById(R.id.ah_btn_juegos);
+        ah_tv_partituras_anteriores = findViewById(R.id.ah_tv_partituras_anteriores);
+        ah_lv_partituras = findViewById(R.id.ah_lv_partituras);
         dialogo = new Dialog(this);
         dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        toolbar = (Toolbar) findViewById(R.id.agp_toolbar);
+        Toolbar toolbar = findViewById(R.id.ah_toolbar);
 
         //Toolbar
         toolbar.setTitle("Inicio");
@@ -66,7 +64,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         recargarListaPartituras();
 
         //Item click listener de la lista de partituras
-        agp_lv_partituras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        ah_lv_partituras.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 abrirDialogoOpcionesPartitura(i);
@@ -74,10 +72,18 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         });
 
         //Click listener del botón que abre el diálogo para crear una nueva partitura
-        agp_btn_crear_partitura.setOnClickListener(new View.OnClickListener() {
+        ah_btn_crear_partitura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 abrirDialogoNuevaPartitura();
+            }
+        });
+
+        ah_btn_juegos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), JuegosActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -92,8 +98,8 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         dialogo.show();
 
         //Inicializar vistas del diálogo
-        Button pdp_btn_cancelar = (Button) dialogo.findViewById(R.id.pdp_btn_cancelar);
-        Button pdp_btn_aceptar = (Button) dialogo.findViewById(R.id.pdp_btn_aceptar);
+        Button pdp_btn_cancelar = dialogo.findViewById(R.id.pdp_btn_cancelar);
+        Button pdp_btn_aceptar = dialogo.findViewById(R.id.pdp_btn_aceptar);
 
         //Click listener del botón para cancelar la creación de una nueva partitura
         pdp_btn_cancelar.setOnClickListener(new View.OnClickListener() {
@@ -120,9 +126,9 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         dialogo.show();
 
         //Inicializar vistas del diálogo
-        ImageButton pop_imgbtn_eliminar_partitura = (ImageButton) dialogo.findViewById(R.id.pop_imgbtn_eliminar_partitura);
-        ImageButton pop_imgbtn_editar_partitura = (ImageButton) dialogo.findViewById(R.id.pop_imgbtn_editar_partitura);
-        Button pop_btn_cancelar = (Button) dialogo.findViewById(R.id.pop_btn_cancelar);
+        ImageButton pop_imgbtn_eliminar_partitura = dialogo.findViewById(R.id.pop_imgbtn_eliminar_partitura);
+        ImageButton pop_imgbtn_editar_partitura = dialogo.findViewById(R.id.pop_imgbtn_editar_partitura);
+        Button pop_btn_cancelar = dialogo.findViewById(R.id.pop_btn_cancelar);
 
         //Click listener del botón para eliminar una partitura
         pop_imgbtn_eliminar_partitura.setOnClickListener(new View.OnClickListener() {
@@ -160,8 +166,8 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     private void crearNuevaPartitura() {
 
         //Inicializar vistas del dialogo
-        TextView pdp_et_nombre_autor = (EditText) dialogo.findViewById(R.id.pdp_et_nombre_autor);
-        TextView pdp_et_nombre_partitura = (EditText) dialogo.findViewById(R.id.pdp_et_nombre_partitura);
+        TextView pdp_et_nombre_autor = dialogo.findViewById(R.id.pdp_et_nombre_autor);
+        TextView pdp_et_nombre_partitura = dialogo.findViewById(R.id.pdp_et_nombre_partitura);
 
         //Obtener texto de los edit text del diálogo
         String nombreAutor = pdp_et_nombre_autor.getText().toString();
@@ -188,7 +194,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     private void editarPartitura(int i) {
 
         //Inicializar variable que contiene el nombre del archivo de la partitura
-        String nombreArchivo = "";
+        String nombreArchivo;
 
         //Asignar nombre del archvio de partitura que se va a editar
         if (i >= 0) {
@@ -212,12 +218,13 @@ public class GestionarPartituraActivity extends AppCompatActivity {
 
         //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
         //Asignar nombre del archivo
-        String nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s", "_") + ".wsnd";
+        String nombreBase = tituloPartitura.trim().toLowerCase().replaceAll("\\s", "_");
+        String nombreArchivo = nombreBase + ".wsnd";
 
         //Agregar sufijo si existe un archivo con el mismo nombre
         int sufijoNombre = 2;
         while (archivos.contains(nombreArchivo)) {
-            nombreArchivo = tituloPartitura.trim().toLowerCase().replaceAll("\\s", "_") + "_" + sufijoNombre + ".wsnd";
+            nombreArchivo = nombreBase + "_" + sufijoNombre + ".wsnd";
             sufijoNombre++;
         }
 
@@ -246,7 +253,9 @@ public class GestionarPartituraActivity extends AppCompatActivity {
         File archivoPartitura = new File(getFilesDir(), nombreArchivo);
 
         //Eliminar archivo
-        archivoPartitura.delete();
+        if(archivoPartitura.delete()){
+            Toast.makeText(this, "Partitura eliminada", Toast.LENGTH_SHORT).show();
+        }
 
         //Recargar lista de partituras
         recargarListaPartituras();
@@ -294,12 +303,12 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     public void recargarListaPartituras() {
 
         AdaptadorListaPartitura adaptador = new AdaptadorListaPartitura(this, getPartituras());
-        agp_lv_partituras.setAdapter(adaptador);
+        ah_lv_partituras.setAdapter(adaptador);
 
         if (!archivos.isEmpty()) {
-            agp_tv_partituras_anteriores.setVisibility(View.VISIBLE);
+            ah_tv_partituras_anteriores.setVisibility(View.VISIBLE);
         } else {
-            agp_tv_partituras_anteriores.setVisibility(View.INVISIBLE);
+            ah_tv_partituras_anteriores.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -312,6 +321,7 @@ public class GestionarPartituraActivity extends AppCompatActivity {
     }
 
     //Acciones del toolbar
+    @SuppressLint("NonConstantResourceId")
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {

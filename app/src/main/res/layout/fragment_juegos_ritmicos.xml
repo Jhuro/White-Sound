@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/clr_b"
+    tools:context=".fragmentos.JuegosRitmicosFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/fjr_tv_tiempo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:gravity="center"
+            android:text="@string/txt_fjr_tv_tiempo"
+            android:textColor="@color/clr_e"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <include
+            android:id="@+id/fjr_menu_inferior"
+            layout="@layout/bottom_nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"></include>
+
+        <ImageButton
+            android:id="@+id/fjr_imgbtn_subir_altura"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="@string/cd_imgbtn_subir_altura"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_altura"
+            app:layout_constraintBottom_toTopOf="@+id/fjr_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fjr_imgbtn_bajar_altura"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageButton
+            android:id="@+id/fjr_imgbtn_bajar_altura"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="@string/cd_imgbtn_bajar_altura"
+            android:padding="10dp"
+            android:rotation="180"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_altura"
+            app:layout_constraintBottom_toTopOf="@+id/fjr_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fjr_imgbtn_repetir_nota"
+            app:layout_constraintStart_toEndOf="@+id/fjr_imgbtn_subir_altura" />
+
+        <ImageButton
+            android:id="@+id/fjr_imgbtn_repetir_nota"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="@string/txt_fjr_imgbtn_repetir_nota"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_reproducir"
+            app:layout_constraintBottom_toTopOf="@+id/fjr_menu_inferior"
+            app:layout_constraintEnd_toStartOf="@+id/fjr_imgbtn_responder"
+            app:layout_constraintStart_toEndOf="@id/fjr_imgbtn_bajar_altura" />
+
+        <ImageButton
+            android:id="@+id/fjr_imgbtn_responder"
+            android:layout_width="0dp"
+            android:layout_height="67dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_clr_e"
+            android:contentDescription="@string/fjr_imgbtn_responder"
+            android:padding="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_responder"
+            app:layout_constraintBottom_toTopOf="@+id/fjr_menu_inferior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fjr_imgbtn_repetir_nota" />
+
+        <TextView
+            android:id="@+id/fjr_tv_respuesta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_tv_nota"
+            android:textAlignment="center"
+            android:textColor="@color/clr_e"
+            android:textSize="42sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fjr_imgbtn_subir_altura"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fjr_tv_tiempo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

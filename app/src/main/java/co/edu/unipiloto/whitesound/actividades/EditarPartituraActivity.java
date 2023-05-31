@@ -5,14 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
-import android.media.SoundPool;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -35,26 +36,28 @@ public class EditarPartituraActivity extends AppCompatActivity {
     public static final String ARCHIVO = "partitura.wsnd";
     private String archivoPartitura;
     private Partitura partitura, partituraTemp;
-    private Toolbar toolbar;
-    private MediaPlayer[] notas;
+    private MediaPlayer[] notasTeclado, notasSolfeo;
     private Handler handler;
-
+    private boolean solfeo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_partitura);
-        if (Build.VERSION.SDK_INT > 16) {
-            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        }
-        initSoundPlayer();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        initMediaPlayer();
         initActivity();
-
+        loadPreferences();
         if(savedInstanceState != null){
             archivoPartitura = savedInstanceState.getString("archivoPartitura");
             partitura = (Partitura) savedInstanceState.getSerializable("partitura");
             partituraTemp = (Partitura) savedInstanceState.getSerializable("partituraTemp");
         }
+    }
+
+    private void loadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        solfeo = sharedPreferences.getBoolean("solfeo",false);
     }
 
     @Override
@@ -73,7 +76,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
         handler.removeCallbacksAndMessages(null);
     }
 
-    private void initSoundPlayer() {
+    private void initMediaPlayer() {
         MediaPlayer.OnCompletionListener listener = new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaPlayer) {
@@ -88,23 +91,48 @@ public class EditarPartituraActivity extends AppCompatActivity {
             }
         };
 
-        notas = new MediaPlayer[]{
-                MediaPlayer.create(this, R.raw.c),
-                MediaPlayer.create(this, R.raw.d),
-                MediaPlayer.create(this, R.raw.e),
-                MediaPlayer.create(this, R.raw.f),
-                MediaPlayer.create(this, R.raw.g),
-                MediaPlayer.create(this, R.raw.a),
-                MediaPlayer.create(this, R.raw.b),
-                MediaPlayer.create(this, R.raw.cs_db),
-                MediaPlayer.create(this, R.raw.ds_eb),
-                MediaPlayer.create(this, R.raw.fs_gb),
-                MediaPlayer.create(this, R.raw.gs_ab),
-                MediaPlayer.create(this, R.raw.as_bb),
+        notasTeclado = new MediaPlayer[]{
+                MediaPlayer.create(this, R.raw.t_c),
+                MediaPlayer.create(this, R.raw.t_d),
+                MediaPlayer.create(this, R.raw.t_e),
+                MediaPlayer.create(this, R.raw.t_f),
+                MediaPlayer.create(this, R.raw.t_g),
+                MediaPlayer.create(this, R.raw.t_a),
+                MediaPlayer.create(this, R.raw.t_b),
+                MediaPlayer.create(this, R.raw.t_cs_db),
+                MediaPlayer.create(this, R.raw.t_ds_eb),
+                MediaPlayer.create(this, R.raw.t_fs_gb),
+                MediaPlayer.create(this, R.raw.t_gs_ab),
+                MediaPlayer.create(this, R.raw.t_as_bb),
                 MediaPlayer.create(this, R.raw.silencio)
         };
 
-        for(MediaPlayer mp : notas){
+        notasSolfeo = new MediaPlayer[]{
+                MediaPlayer.create(this, R.raw.s_c),
+                MediaPlayer.create(this, R.raw.s_d),
+                MediaPlayer.create(this, R.raw.s_e),
+                MediaPlayer.create(this, R.raw.s_f),
+                MediaPlayer.create(this, R.raw.s_g),
+                MediaPlayer.create(this, R.raw.s_a),
+                MediaPlayer.create(this, R.raw.s_b),
+                MediaPlayer.create(this, R.raw.s_db),
+                MediaPlayer.create(this, R.raw.s_eb),
+                MediaPlayer.create(this, R.raw.s_gb),
+                MediaPlayer.create(this, R.raw.s_ab),
+                MediaPlayer.create(this, R.raw.s_bb),
+                MediaPlayer.create(this, R.raw.s_cs),
+                MediaPlayer.create(this, R.raw.s_ds),
+                MediaPlayer.create(this, R.raw.s_fs),
+                MediaPlayer.create(this, R.raw.s_gs),
+                MediaPlayer.create(this, R.raw.s_as),
+                MediaPlayer.create(this, R.raw.silencio)
+        };
+
+        for(MediaPlayer mp : notasTeclado){
+            mp.setOnCompletionListener(listener);
+        }
+
+        for(MediaPlayer mp : notasSolfeo){
             mp.setOnCompletionListener(listener);
         }
     }
@@ -118,7 +146,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        toolbar = findViewById(R.id.aep_toolbar);
+        Toolbar toolbar = findViewById(R.id.aep_toolbar);
 
         //Toolbar
         toolbar.setTitle("Edición");
@@ -217,6 +245,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
     }
 
     //Acciones del toolbar
+    @SuppressLint("NonConstantResourceId")
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
@@ -236,31 +265,58 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
     public void pausarReproduccion(){
         handler.removeCallbacksAndMessages(null);
-        for(MediaPlayer mp: notas){
-            if(mp.isPlaying()){
-                mp.pause();
-                mp.seekTo(0);
+        if(solfeo){
+            for(MediaPlayer mp: notasSolfeo){
+                if(mp.isPlaying()){
+                    mp.pause();
+                    mp.seekTo(0);
+                }
+            }
+        }else{
+            for(MediaPlayer mp: notasTeclado){
+                if(mp.isPlaying()){
+                    mp.pause();
+                    mp.seekTo(0);
+                }
             }
         }
     }
 
     public void reproducirNota(int nota, int duracion) {
 
-        for(MediaPlayer mp: notas){
-            if(mp.isPlaying()){
-                mp.pause();
-                mp.seekTo(0);
+        if(solfeo){
+            for(MediaPlayer mp: notasSolfeo){
+                if(mp.isPlaying()){
+                    mp.pause();
+                    mp.seekTo(0);
+                }
             }
+
+            notasSolfeo[nota].start();
+            handler.removeCallbacksAndMessages(null);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    notasSolfeo[nota].seekTo(notasSolfeo[nota].getDuration());
+                }
+            }, notasSolfeo[nota].getDuration()/(int) Math.pow(2, duracion));
+        }else{
+            for(MediaPlayer mp: notasSolfeo){
+                if(mp.isPlaying()){
+                    mp.pause();
+                    mp.seekTo(0);
+                }
+            }
+
+            notasTeclado[nota].start();
+            handler.removeCallbacksAndMessages(null);
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    notasTeclado[nota].seekTo(notasTeclado[nota].getDuration());
+                }
+            }, notasTeclado[nota].getDuration()/(int) Math.pow(2, duracion));
         }
-        
-        notas[nota].start();
-        handler.removeCallbacksAndMessages(null);
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                notas[nota].seekTo(notas[nota].getDuration());
-            }
-        }, notas[nota].getDuration()/(int) Math.pow(2, duracion));
 
         /*
         for(MediaPlayer mp: notas){
@@ -299,8 +355,17 @@ public class EditarPartituraActivity extends AppCompatActivity {
         super.onDestroy();
 
         handler.removeCallbacksAndMessages(null);
-        for(MediaPlayer mp : notas){
+        for(MediaPlayer mp : notasTeclado){
             mp.release();
         }
+        for(MediaPlayer mp : notasSolfeo){
+            mp.release();
+        }
+    }
+
+    public void onResume(){
+        super.onResume();
+
+        loadPreferences();
     }
 }

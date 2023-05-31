@@ -1,5 +1,6 @@
 package co.edu.unipiloto.whitesound.fragmentos;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,13 +28,11 @@ import co.edu.unipiloto.whitesound.clases.Partitura;
 
 public class LecturaFragment extends Fragment {
 
-    private ImageButton fl_imgbtn_desplazar_izq, fl_imgbtn_desplazar_der, fl_imgbtn_modo_edicion,
-            fl_imgbtn_reproducir, fl_imgbtn_pausar, fl_imgbtn_detener;
-    private TextView fl_tv_titulo, fl_tv_autor, fl_tv_nota;
-    private Partitura partitura;
+    private ImageButton fl_imgbtn_desplazar_izq, fl_imgbtn_desplazar_der, fl_imgbtn_reproducir;
+    private TextView fl_tv_nota;
     private ListaDE partituraLDE;
     private int partituraIndex;
-    private boolean reproduccion;
+    private boolean reproduccion, solfeo;
     private List<String> altura, figurasMusicales;
 
     public LecturaFragment() {
@@ -55,12 +55,12 @@ public class LecturaFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initViews(view);
-
+        loadPreferences();
         if (savedInstanceState != null){
             partituraIndex = savedInstanceState.getInt("partituraIndex");
 
             if (partituraLDE.isEmpty()) {
-                fl_tv_nota.setText("Partitura vacía");
+                fl_tv_nota.setText(R.string.fl_tv_partitura_vacia);
             } else {
                 Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
                 fl_tv_nota.setText(nota.toString());
@@ -72,6 +72,11 @@ public class LecturaFragment extends Fragment {
                 reproducirPartitura();
             }
         }
+    }
+
+    private void loadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        solfeo = sharedPreferences.getBoolean("solfeo",false);
     }
 
     @Override
@@ -86,17 +91,16 @@ public class LecturaFragment extends Fragment {
 
         final NavController navController = Navigation.findNavController(view);
 
+        Partitura partitura = ((EditarPartituraActivity) getActivity()).getPartituraTemp();
 
-        partitura = ((EditarPartituraActivity) getActivity()).getPartituraTemp();
-
-        fl_tv_titulo = view.findViewById(R.id.fl_tv_titulo);
-        fl_tv_autor = view.findViewById(R.id.fl_tv_autor);
+        TextView fl_tv_titulo = view.findViewById(R.id.fl_tv_titulo);
+        TextView fl_tv_autor = view.findViewById(R.id.fl_tv_autor);
         fl_imgbtn_desplazar_izq = view.findViewById(R.id.fl_imgbtn_desplazar_izq);
         fl_imgbtn_desplazar_der = view.findViewById(R.id.fl_imgbtn_desplazar_der);
-        fl_imgbtn_modo_edicion = view.findViewById(R.id.fe_imgbtn_modo_edicion);
+        ImageButton fl_imgbtn_modo_edicion = view.findViewById(R.id.fe_imgbtn_modo_edicion);
         fl_imgbtn_reproducir = view.findViewById(R.id.fl_imgbtn_reproducir);
-        fl_imgbtn_pausar = view.findViewById(R.id.fl_imgbtn_pausar);
-        fl_imgbtn_detener = view.findViewById(R.id.fl_imgbtn_detener);
+        ImageButton fl_imgbtn_pausar = view.findViewById(R.id.fl_imgbtn_pausar);
+        ImageButton fl_imgbtn_reiniciar = view.findViewById(R.id.fl_imgbtn_reiniciar);
 
         fl_tv_nota = view.findViewById(R.id.fl_tv_nota);
 
@@ -111,12 +115,29 @@ public class LecturaFragment extends Fragment {
         initFiguras();
 
         if (partituraLDE.isEmpty()) {
-            fl_tv_nota.setText("Partitura vacía");
+            fl_tv_nota.setText(R.string.fl_tv_partitura_vacia);
         } else {
             Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
+            int alturaIdx = 12;
+            if(solfeo){
+                alturaIdx = 17;
+            }
+            if (!nota.isSilencio()) {
+                alturaIdx = altura.indexOf(nota.getAltura());
+                if (nota.getAlteracion() != null) {
+                    if (nota.getAlteracion().equals("Sostenido")) {
+                        alturaIdx += 7 - (alturaIdx / 3);
+                        if(solfeo){
+                            alturaIdx+=5;
+                        }
+                    } else if (nota.getAlteracion().equals("Bemol")) {
+                        alturaIdx += 6 - (alturaIdx / 4);
+                    }
+                }
+            }
             fl_tv_nota.setText(nota.toString());
             ((EditarPartituraActivity) getActivity()).reproducirNota(
-                    altura.indexOf(nota.getAltura()),
+                    alturaIdx,
                     figurasMusicales.indexOf(nota.getDuracion()));
         }
 
@@ -155,10 +176,10 @@ public class LecturaFragment extends Fragment {
             }
         });
 
-        fl_imgbtn_detener.setOnClickListener(new View.OnClickListener() {
+        fl_imgbtn_reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                detenerPartitura();
+                reiniciarPartitura();
             }
         });
     }
@@ -170,11 +191,17 @@ public class LecturaFragment extends Fragment {
         if (!partituraLDE.isEmpty()) {
             Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
             int alturaIdx = 12;
+            if(solfeo){
+                alturaIdx = 17;
+            }
             if (!nota.isSilencio()) {
                 alturaIdx = altura.indexOf(nota.getAltura());
                 if (nota.getAlteracion() != null) {
                     if (nota.getAlteracion().equals("Sostenido")) {
                         alturaIdx += 7 - (alturaIdx / 3);
+                        if(solfeo){
+                            alturaIdx+=5;
+                        }
                     } else if (nota.getAlteracion().equals("Bemol")) {
                         alturaIdx += 6 - (alturaIdx / 4);
                     }
@@ -195,13 +222,19 @@ public class LecturaFragment extends Fragment {
         if (!partituraLDE.isEmpty()) {
             Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
             int alturaIdx = 12;
-            if (!nota.isSilencio()){
+            if(solfeo){
+                alturaIdx = 17;
+            }
+            if (!nota.isSilencio()) {
                 alturaIdx = altura.indexOf(nota.getAltura());
-                if(nota.getAlteracion() != null) {
+                if (nota.getAlteracion() != null) {
                     if (nota.getAlteracion().equals("Sostenido")) {
-                        alturaIdx += 7 - (alturaIdx/3);
+                        alturaIdx += 7 - (alturaIdx / 3);
+                        if(solfeo){
+                            alturaIdx+=5;
+                        }
                     } else if (nota.getAlteracion().equals("Bemol")) {
-                        alturaIdx += 6 - (alturaIdx/4);
+                        alturaIdx += 6 - (alturaIdx / 4);
                     }
                 }
             }
@@ -230,11 +263,17 @@ public class LecturaFragment extends Fragment {
 
             Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
             int alturaIdx = 12;
+            if(solfeo){
+                alturaIdx = 17;
+            }
             if (!nota.isSilencio()) {
                 alturaIdx = altura.indexOf(nota.getAltura());
                 if (nota.getAlteracion() != null) {
                     if (nota.getAlteracion().equals("Sostenido")) {
-                        alturaIdx += 7 - (alturaIdx / 4);
+                        alturaIdx += 7 - (alturaIdx / 3);
+                        if(solfeo){
+                            alturaIdx+=5;
+                        }
                     } else if (nota.getAlteracion().equals("Bemol")) {
                         alturaIdx += 6 - (alturaIdx / 4);
                     }
@@ -245,6 +284,13 @@ public class LecturaFragment extends Fragment {
             ((EditarPartituraActivity) getActivity()).reproducirNota(
                     alturaIdx,
                     figurasMusicales.indexOf(nota.getDuracion()));
+
+            if (partituraIndex == partituraLDE.getSize() - 1) {
+                reproduccion = false;
+                fl_imgbtn_reproducir.setEnabled(true);
+                fl_imgbtn_desplazar_izq.setEnabled(true);
+                fl_imgbtn_desplazar_der.setEnabled(true);
+            }
         }
     }
 
@@ -256,17 +302,19 @@ public class LecturaFragment extends Fragment {
         fl_imgbtn_desplazar_der.setEnabled(true);
     }
 
-    public void detenerPartitura(){
-        ((EditarPartituraActivity) getActivity()).pausarReproduccion();
-        reproduccion = false;
-        fl_imgbtn_reproducir.setEnabled(true);
-        fl_imgbtn_desplazar_izq.setEnabled(true);
-        fl_imgbtn_desplazar_der.setEnabled(true);
+    public void reiniciarPartitura(){
+        if(!partituraLDE.isEmpty()) {
+            ((EditarPartituraActivity) getActivity()).pausarReproduccion();
+            reproduccion = false;
+            fl_imgbtn_reproducir.setEnabled(true);
+            fl_imgbtn_desplazar_izq.setEnabled(true);
+            fl_imgbtn_desplazar_der.setEnabled(true);
 
-        partituraIndex = 0;
+            partituraIndex = 0;
 
-        Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
-        fl_tv_nota.setText(nota.toString());
+            Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
+            fl_tv_nota.setText(nota.toString());
+        }
     }
 
     private void initAlturas() {
@@ -298,5 +346,12 @@ public class LecturaFragment extends Fragment {
 
     public boolean getReproduccion() {
         return reproduccion;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        loadPreferences();
     }
 }

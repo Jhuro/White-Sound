@@ -114,7 +114,7 @@ public class ListaDE implements Iterable, Serializable {
     public Iterator iterator() {
         return new ListaDEIterator();
     }
-    private class Node implements Serializable{
+    private static class Node implements Serializable{
         Nota nota;
         Node prev;
         Node next;

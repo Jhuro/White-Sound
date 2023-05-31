@@ -19,6 +19,32 @@
     <string name="txt_lfm_tv_nombre_figura">Figura musical</string>
     <string name="txt_miep_alteraciones">Alteraciones, sostenido</string>
     <string name="txt_mt_ajustes">Ajustes</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="fl_tv_partitura_vacia">Partitura vacía</string>
+    <string name="fe_tv_agregar_nota">Agregar nota</string>
+    <string name="txt_prj_tv_resultados">Resultados</string>
+    <string name="txt_prj_tv_aciertos">Aciertos: %1$d</string>
+    <string name="txt_prj_tv_fallos">Fallos: %1$d</string>
+    <string name="txt_prj_tv_precision">Precisión: %1$s</string>
+    <string name="txt_prj_btn_reiniciar">Reiniciar</string>
+    <string name="txt_prj_btn_salir">Salir</string>
+    <string name="txt_ah_btn_juegos">Juegos rítmicos</string>
+    <string name="cd_fe_imgbtn_modo_lectura">Cambiar a modo lectura</string>
+    <string name="cd_imgbtn_desplazar_izq">Desplazar a la izquierda</string>
+    <string name="cd_imgbtn_desplazar_der">Desplazar a la derecha</string>
+    <string name="cd_imgbtn_subir_altura">Subir altura</string>
+    <string name="cd_imgbtn_bajar_altura">Bajar altura</string>
+    <string name="cd_fe_imgbtn_añadir_nota">Añadir negra</string>
+    <string name="txt_tv_nota">Nota</string>
+    <string name="hnt_fe_et_titulo">Título de partitura</string>
+    <string name="hnt_fe_et_autor">Nombre del autor</string>
+    <string name="txt_fjh_btn_altura">Practica de altura</string>
+    <string name="txt_fjh_btn_duracion">Practica de duración</string>
+    <string name="txt_fjh_btn_combinado">Practica combinada</string>
+    <string name="txt_fjr_tv_tiempo">Tiempo</string>
+    <string name="txt_fjr_imgbtn_repetir_nota">Repetir nota</string>
+    <string name="fjr_imgbtn_responder">Respuesta: Do</string>
+    <string name="cd_fe_imgbtn_modo_edicion">Cambiar a modo edición</string>
+    <string name="cd_fl_imgbtn_reproducir">Reproducir partitura</string>
+    <string name="cd_fl_imgbtn_pausar">Pausar Reproducción</string>
+    <string name="cd_fl_imgbtn_reiniciar">Detener Reproducción</string>
 </resources>

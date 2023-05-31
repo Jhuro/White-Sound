@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Reproducción">
+
+        <SwitchPreference
+            android:key="solfeo"
+            android:title="Habilitar solfeo"
+            android:summary="La reproducción de las notas se hará mediante el solfeo entonado con la técnica del 'do móvil'.">
+        </SwitchPreference>
+    </PreferenceCategory>
+</PreferenceScreen>

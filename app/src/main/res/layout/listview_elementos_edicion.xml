@@ -21,7 +21,7 @@
         android:padding="5dp"
         android:text="@string/txt_lfm_tv_nombre_figura"
         android:textColor="@color/clr_a"
-        android:textSize="12pt"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
 

@@ -9,92 +9,85 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/pdp_tv_autor"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/txt_pdp_tv_autor"
-        android:textColor="@color/clr_a"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_partitura" />
-
-    <EditText
-        android:id="@+id/pdp_et_nombre_autor"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/clr_a"
-        android:ems="10"
-        android:hint="@string/txt_pdp_et_nombre_autor"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/clr_e"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_tv_autor"
-        android:autofillHints="Sin autor" />
-
-    <TextView
-        android:id="@+id/pdp_tv_titulo_partitura"
+        android:id="@+id/prj_tv_resultados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/txt_pdp_tv_titulo_partitura"
-        android:textColor="@color/clr_a"
+        android:text="@string/txt_prj_tv_resultados"
+        android:textColor="@color/clr_b"
+        android:gravity="center"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/pdp_et_nombre_partitura"
+    <TextView
+        android:id="@+id/prj_tv_aciertos"
         android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/clr_a"
-        android:ems="10"
-        android:hint="@string/txt_pdp_et_nombre_partitura"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/clr_e"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/txt_prj_tv_aciertos"
+        android:textColor="@color/clr_a"
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_tv_titulo_partitura"
-        android:autofillHints="Sin título"/>
+        app:layout_constraintTop_toBottomOf="@id/prj_tv_resultados" />
+
+    <TextView
+        android:id="@+id/prj_tv_fallos"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/txt_prj_tv_fallos"
+        android:textColor="@color/clr_a"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prj_tv_aciertos" />
+
+    <TextView
+        android:id="@+id/prj_tv_precision"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/txt_prj_tv_precision"
+        android:textColor="@color/clr_a"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prj_tv_fallos" />
 
     <Button
-        android:id="@+id/pdp_btn_cancelar"
+        android:id="@+id/prj_btn_reiniciar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="2dp"
         android:backgroundTint="@color/clr_b"
-        android:text="@string/txt_pdp_btn_cancelar"
+        android:text="@string/txt_prj_btn_reiniciar"
         android:textColor="@color/clr_e"
         android:textSize="14pt"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/pdp_btn_aceptar"
+        app:layout_constraintEnd_toStartOf="@+id/prj_btn_salir"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
+        app:layout_constraintTop_toBottomOf="@+id/prj_tv_precision" />
 
     <Button
-        android:id="@+id/pdp_btn_aceptar"
+        android:id="@+id/prj_btn_salir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/clr_b"
-        android:text="@string/txt_pdp_btn_aceptar"
+        android:text="@string/txt_prj_btn_salir"
         android:textColor="@color/clr_e"
         android:textSize="14pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pdp_btn_cancelar"
-        app:layout_constraintTop_toBottomOf="@+id/pdp_et_nombre_autor" />
+        app:layout_constraintStart_toEndOf="@id/prj_btn_reiniciar"
+        app:layout_constraintTop_toBottomOf="@+id/prj_tv_precision" />
 </androidx.constraintlayout.widget.ConstraintLayout>

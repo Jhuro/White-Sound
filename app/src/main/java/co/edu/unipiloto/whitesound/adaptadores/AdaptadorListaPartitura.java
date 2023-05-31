@@ -1,5 +1,6 @@
 package co.edu.unipiloto.whitesound.adaptadores;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,8 @@ import co.edu.unipiloto.whitesound.clases.Partitura;
 
 public class AdaptadorListaPartitura extends BaseAdapter {
 
-    private Context context;
-    private List<Partitura> lst;
+    private final Context context;
+    private final List<Partitura> lst;
 
     public AdaptadorListaPartitura(Context context, List<Partitura> lst) {
         this.context = context;
@@ -37,6 +38,7 @@ public class AdaptadorListaPartitura extends BaseAdapter {
         return i;
     }
 
+    @SuppressLint("InflateParams")
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
 
@@ -48,8 +50,8 @@ public class AdaptadorListaPartitura extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.listview_partitura, null);
         }
 
-        titulo = (TextView) view.findViewById(R.id.lp_tv_titulo_partitura);
-        autor = (TextView) view.findViewById(R.id.lp_tv_autor_partitura);
+        titulo = view.findViewById(R.id.lp_tv_titulo_partitura);
+        autor = view.findViewById(R.id.lp_tv_autor_partitura);
 
         titulo.setText(partitura.getTitulo());
         autor.setText(partitura.getAutor());

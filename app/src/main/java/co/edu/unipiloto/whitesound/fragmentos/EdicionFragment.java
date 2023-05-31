@@ -1,5 +1,6 @@
 package co.edu.unipiloto.whitesound.fragmentos;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -37,9 +38,8 @@ public class EdicionFragment extends Fragment {
 
     private EditText fe_et_titulo, fe_et_autor;
     private TextView fe_tv_nota;
-    private ImageButton fe_imgbtn_añadir_nota, fe_imgbtn_desplazar_izq, fe_imgbtn_desplazar_der, fe_imgbtn_subir_altura, fe_imgbtn_bajar_altura, fe_imgbtn_modo_lectura;
+    private ImageButton fe_imgbtn_agregar_nota;
     private List<String> figurasMusicales, silenciosMusicales, alteracionesMusicales, altura;
-    private BottomNavigationView fe_menu_inferior;
     private Dialog dialogo;
     private Partitura partitura;
     private ListaDE partituraLDE;
@@ -76,7 +76,7 @@ public class EdicionFragment extends Fragment {
                 }
                 fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
             }else{
-                fe_tv_nota.setText("Agregar nota");
+                fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
             }
         }
     }
@@ -95,15 +95,15 @@ public class EdicionFragment extends Fragment {
 
         fe_et_titulo = view.findViewById(R.id.fe_et_titulo);
         fe_et_autor = view.findViewById(R.id.fe_et_autor);
-        fe_menu_inferior = view.findViewById(R.id.fe_menu_inferior);
+        BottomNavigationView fe_menu_inferior = view.findViewById(R.id.fe_menu_inferior);
         dialogo = new Dialog(getContext());
         dialogo.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        fe_imgbtn_modo_lectura = view.findViewById(R.id.fe_imgbtn_modo_lectura);
-        fe_imgbtn_añadir_nota = view.findViewById(R.id.fe_imgbtn_añadir_nota);
-        fe_imgbtn_desplazar_izq = view.findViewById(R.id.fe_imgbtn_desplazar_izq);
-        fe_imgbtn_desplazar_der = view.findViewById(R.id.fe_imgbtn_desplazar_der);
-        fe_imgbtn_subir_altura = view.findViewById(R.id.fe_imgbtn_subir_altura);
-        fe_imgbtn_bajar_altura = view.findViewById(R.id.fe_imgbtn_bajar_altura);
+        ImageButton fe_imgbtn_modo_lectura = view.findViewById(R.id.fe_imgbtn_modo_lectura);
+        fe_imgbtn_agregar_nota = view.findViewById(R.id.fe_imgbtn_añadir_nota);
+        ImageButton fe_imgbtn_desplazar_izq = view.findViewById(R.id.fe_imgbtn_desplazar_izq);
+        ImageButton fe_imgbtn_desplazar_der = view.findViewById(R.id.fe_imgbtn_desplazar_der);
+        ImageButton fe_imgbtn_subir_altura = view.findViewById(R.id.fe_imgbtn_subir_altura);
+        ImageButton fe_imgbtn_bajar_altura = view.findViewById(R.id.fe_imgbtn_bajar_altura);
         fe_tv_nota = view.findViewById(R.id.fe_tv_nota);
 
         elementoIndex = 0;
@@ -122,7 +122,7 @@ public class EdicionFragment extends Fragment {
 
         if(partituraLDE.isEmpty()){
             nuevaNota = true;
-            fe_tv_nota.setText("Agregar nota");
+            fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
         }else{
             if(!partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()){
                 alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
@@ -159,10 +159,10 @@ public class EdicionFragment extends Fragment {
             }
         });
 
-        fe_imgbtn_añadir_nota.setOnClickListener(new View.OnClickListener() {
+        fe_imgbtn_agregar_nota.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                añadirNota();
+                agregarNota();
             }
         });
 
@@ -178,6 +178,7 @@ public class EdicionFragment extends Fragment {
 
         //Menu inferior
         fe_menu_inferior.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -270,45 +271,31 @@ public class EdicionFragment extends Fragment {
             case "Redonda":
                 item.setIcon(R.drawable.ic_redonda);
                 duracionIndex = 0;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_redonda);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_redonda);
                 break;
             case "Blanca":
                 item.setIcon(R.drawable.ic_blanca);
                 duracionIndex = 1;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_blanca);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_blanca);
                 break;
             case "Negra":
                 item.setIcon(R.drawable.ic_negra);
                 duracionIndex = 2;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_negra);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_negra);
                 break;
             case "Corchea":
                 item.setIcon(R.drawable.ic_corchea);
                 duracionIndex = 3;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_corchea);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_corchea);
                 break;
             case "Semicorchea":
                 item.setIcon(R.drawable.ic_semicorchea);
                 duracionIndex = 4;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_semicorchea);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_semicorchea);
                 break;
-            case "Fusa":
-                item.setIcon(R.drawable.ic_fusa);
-                duracionIndex = 5;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_fusa);
-                break;
-            case "Semifusa":
-                item.setIcon(R.drawable.ic_semifusa);
-                duracionIndex = 6;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_semifusa);
-                break;
-            case "Garrapatea":
-                item.setIcon(R.drawable.ic_garrapatea);
-                duracionIndex = 7;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_garrapatea);
         }
         elementoIndex = 0;
-        fe_imgbtn_añadir_nota.setContentDescription("Añadir " + figura.toLowerCase());
+        fe_imgbtn_agregar_nota.setContentDescription("Añadir " + figura.toLowerCase());
         item.setTitle("Figuras musicales, " + figura.toLowerCase());
 
         cerrarDialogo();
@@ -321,46 +308,32 @@ public class EdicionFragment extends Fragment {
             case "Silencio de redonda":
                 item.setIcon(R.drawable.ic_silencio_redonda);
                 duracionIndex = 0;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_redonda);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_silencio_redonda);
                 break;
             case "Silencio de blanca":
                 item.setIcon(R.drawable.ic_silencio_blanca);
                 duracionIndex = 1;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_blanca);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_silencio_blanca);
                 break;
             case "Silencio de negra":
                 item.setIcon(R.drawable.ic_silencio_negra);
                 duracionIndex = 2;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_negra);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_silencio_negra);
                 break;
             case "Silencio de corchea":
                 item.setIcon(R.drawable.ic_silencio_corchea);
                 duracionIndex = 3;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_corchea);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_silencio_corchea);
                 break;
             case "Silencio de semicorchea":
                 item.setIcon(R.drawable.ic_silencio_semicorchea);
                 duracionIndex = 4;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_semicorchea);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_silencio_semicorchea);
                 break;
-            case "Silencio de fusa":
-                item.setIcon(R.drawable.ic_silencio_fusa);
-                duracionIndex = 5;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_fusa);
-                break;
-            case "Silencio de semifusa":
-                item.setIcon(R.drawable.ic_silencio_semifusa);
-                duracionIndex = 6;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_semifusa);
-                break;
-            case "Silencio de garrapatea":
-                item.setIcon(R.drawable.ic_silencio_garrapatea);
-                duracionIndex = 7;
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_silencio_garrapatea);
         }
 
         elementoIndex = 1;
-        fe_imgbtn_añadir_nota.setContentDescription("Añadir " + silencio.toLowerCase());
+        fe_imgbtn_agregar_nota.setContentDescription("Añadir " + silencio.toLowerCase());
         item.setTitle("Silencios, " + silencio.toLowerCase());
         cerrarDialogo();
     }
@@ -372,17 +345,17 @@ public class EdicionFragment extends Fragment {
             case "Sostenido":
                 alteracionIndex = 0;
                 item.setIcon(R.drawable.ic_sostenido);
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_sostenido);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_sostenido);
                 break;
             case "Bemol":
                 alteracionIndex = 1;
                 item.setIcon(R.drawable.ic_bemol);
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_bemol);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_bemol);
                 break;
             case "Sin alteración":
                 alteracionIndex = 2;
                 item.setIcon(R.drawable.ic_sin_alteracion);
-                fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_sin_alteracion);
+                fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_sin_alteracion);
                 break;
         }
 
@@ -442,7 +415,7 @@ public class EdicionFragment extends Fragment {
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
         }else{
-            fe_tv_nota.setText("Agregar nota");
+            fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
         }
     }
 
@@ -459,19 +432,19 @@ public class EdicionFragment extends Fragment {
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
         }else{
-            fe_tv_nota.setText("Agregar nota");
+            fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
         }
     }
 
     private void modoEliminarNota() {
 
         elementoIndex = 3;
-        fe_imgbtn_añadir_nota.setImageResource(R.drawable.ic_eliminar_nota);
-        fe_imgbtn_añadir_nota.setContentDescription("Eliminar nota");
+        fe_imgbtn_agregar_nota.setImageResource(R.drawable.ic_eliminar_nota);
+        fe_imgbtn_agregar_nota.setContentDescription("Eliminar nota");
     }
 
     //Agregar una nota o alteracion a la partitura
-    public void añadirNota(){
+    public void agregarNota(){
 
         switch(elementoIndex){
             //Nota
@@ -530,7 +503,7 @@ public class EdicionFragment extends Fragment {
             partituraLDE.eliminarNotaEnPosicion(partituraIndex);
             if(partituraLDE.isEmpty()){
                 nuevaNota = true;
-                fe_tv_nota.setText("Agregar nota");
+                fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
                 return;
             }else if(partituraIndex == partituraLDE.getSize()){
                 partituraIndex--;
@@ -550,9 +523,6 @@ public class EdicionFragment extends Fragment {
         figurasMusicales.add("Negra");
         figurasMusicales.add("Corchea");
         figurasMusicales.add("Semicorchea");
-        figurasMusicales.add("Fusa");
-        figurasMusicales.add("Semifusa");
-        figurasMusicales.add("Garrapatea");
     }
 
     //Inicializar lista de silencios musicales
@@ -565,9 +535,6 @@ public class EdicionFragment extends Fragment {
         silenciosMusicales.add("Silencio de negra");
         silenciosMusicales.add("Silencio de corchea");
         silenciosMusicales.add("Silencio de semicorchea");
-        silenciosMusicales.add("Silencio de fusa");
-        silenciosMusicales.add("Silencio de semifusa");
-        silenciosMusicales.add("Silencio de garrapatea");
     }
 
     //Inicializar lista de alteraciones musicales
