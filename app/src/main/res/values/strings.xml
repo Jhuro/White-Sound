@@ -42,9 +42,9 @@
     <string name="txt_fjh_btn_combinado">Practica combinada</string>
     <string name="txt_fjr_tv_tiempo">Tiempo</string>
     <string name="txt_fjr_imgbtn_repetir_nota">Repetir nota</string>
-    <string name="fjr_imgbtn_responder">Respuesta: Do</string>
+    <string name="fjr_imgbtn_responder">Respuesta: %1$s</string>
     <string name="cd_fe_imgbtn_modo_edicion">Cambiar a modo edición</string>
     <string name="cd_fl_imgbtn_reproducir">Reproducir partitura</string>
     <string name="cd_fl_imgbtn_pausar">Pausar Reproducción</string>
-    <string name="cd_fl_imgbtn_reiniciar">Detener Reproducción</string>
+    <string name="cd_fl_imgbtn_reiniciar">Reiniciar reproducción de partitura</string>
 </resources>

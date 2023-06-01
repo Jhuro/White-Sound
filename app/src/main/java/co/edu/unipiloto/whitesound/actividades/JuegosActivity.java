@@ -45,6 +45,7 @@ public class JuegosActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         menu.findItem(R.id.mt_guardar).setVisible(false);
+        menu.findItem(R.id.mt_info).setVisible(false);
         return true;
     }
 

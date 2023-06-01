@@ -40,12 +40,14 @@ import co.edu.unipiloto.whitesound.clases.Nota;
 public class JuegosRitmicosFragment extends Fragment {
 
     private int eleccion, alturaIndex, tiempo, correctos, incorrectos, alturaTemp;
+    private ImageButton fjr_imgbtn_responder;
     private Dialog dialogo;
     private Nota notaPregunta, notaRespuesta;
     private TextView fjr_tv_respuesta, fjr_tv_tiempo;
     private List<String> figurasMusicales, alteracionesMusicales, altura;
     private NavController navController;
     private Handler handler;
+    private  Resources res;
 
     public JuegosRitmicosFragment() {
     }
@@ -78,6 +80,7 @@ public class JuegosRitmicosFragment extends Fragment {
             notaRespuesta = (Nota) savedInstanceState.getSerializable("notaRespuesta");
 
             fjr_tv_respuesta.setText(notaRespuesta.toString());
+            fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
             fjr_tv_tiempo.setText(String.valueOf(tiempo));
         }
         reproducirNota();
@@ -103,6 +106,7 @@ public class JuegosRitmicosFragment extends Fragment {
         initFiguras();
         initAlteraciones();
         initAlturas();
+        res = getResources();
         navController = Navigation.findNavController(view);
         alturaIndex = 0;
         correctos = 0;
@@ -117,7 +121,7 @@ public class JuegosRitmicosFragment extends Fragment {
         ImageButton fjr_imgbtn_bajar_altura = view.findViewById(R.id.fjr_imgbtn_bajar_altura);
         ImageButton fjr_imgbtn_subir_altura = view.findViewById(R.id.fjr_imgbtn_subir_altura);
         ImageButton fjr_imgbtn_repetir_nota = view.findViewById(R.id.fjr_imgbtn_repetir_nota);
-        ImageButton fjr_imgbtn_responder = view.findViewById(R.id.fjr_imgbtn_responder);
+        fjr_imgbtn_responder = view.findViewById(R.id.fjr_imgbtn_responder);
         fjr_tv_respuesta = view.findViewById(R.id.fjr_tv_respuesta);
         fjr_tv_tiempo = view.findViewById(R.id.fjr_tv_tiempo);
         dialogo = new Dialog(getContext());
@@ -157,6 +161,7 @@ public class JuegosRitmicosFragment extends Fragment {
         }
 
         fjr_tv_respuesta.setText(notaRespuesta.toString());
+        fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
 
         fjr_imgbtn_subir_altura.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,6 +248,7 @@ public class JuegosRitmicosFragment extends Fragment {
 
                 notaRespuesta.setDuracion(figurasMusicales.get(i));
                 fjr_tv_respuesta.setText(notaRespuesta.toString());
+                fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
                 cerrarDialogo();
             }
         });
@@ -271,6 +277,7 @@ public class JuegosRitmicosFragment extends Fragment {
                     notaRespuesta.setAlteracion(alteracionesMusicales.get(i));
                 }
                 fjr_tv_respuesta.setText(notaRespuesta.toString());
+                fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
                 cerrarDialogo();
             }
         });
@@ -278,7 +285,6 @@ public class JuegosRitmicosFragment extends Fragment {
 
     private void abrirDialogoDeResultados(){
 
-        Resources res = getResources();
         int total = incorrectos + correctos;
         double precision = 0;
         if(total > 0){
@@ -324,6 +330,7 @@ public class JuegosRitmicosFragment extends Fragment {
                         notaRespuesta.setDuracion(figurasMusicales.get(2));
                 }
                 fjr_tv_respuesta.setText(notaRespuesta.toString());
+                fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
                 reproducirNota();
                 cerrarDialogo();
                 iniciarTemporizador();
@@ -346,6 +353,7 @@ public class JuegosRitmicosFragment extends Fragment {
             notaRespuesta.setAltura(altura.get(alturaIndex));
         }
         fjr_tv_respuesta.setText(notaRespuesta.toString());
+        fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
     }
 
     public void bajarAltura() {
@@ -356,6 +364,7 @@ public class JuegosRitmicosFragment extends Fragment {
         }
 
         fjr_tv_respuesta.setText(notaRespuesta.toString());
+        fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
     }
 
     public void responder() {
@@ -383,6 +392,7 @@ public class JuegosRitmicosFragment extends Fragment {
                     notaRespuesta.setDuracion(figurasMusicales.get(2));
             }
             fjr_tv_respuesta.setText(notaRespuesta.toString());
+            fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
             reproducirNota();
         } else {
             Toast.makeText(getContext(), "Incorrecto", Toast.LENGTH_SHORT).show();

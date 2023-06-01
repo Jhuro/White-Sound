@@ -158,6 +158,7 @@ public class EditarPartituraActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        menu.findItem(R.id.mt_info).setVisible(false);
         return true;
     }
 
