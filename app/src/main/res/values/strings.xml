@@ -37,9 +37,9 @@
     <string name="txt_tv_nota">Nota</string>
     <string name="hnt_fe_et_titulo">Título de partitura</string>
     <string name="hnt_fe_et_autor">Nombre del autor</string>
-    <string name="txt_fjh_btn_altura">Practica de altura</string>
-    <string name="txt_fjh_btn_duracion">Practica de duración</string>
-    <string name="txt_fjh_btn_combinado">Practica combinada</string>
+    <string name="txt_fjh_btn_altura">Práctica de altura</string>
+    <string name="txt_fjh_btn_duracion">Práctica de duración</string>
+    <string name="txt_fjh_btn_combinado">Práctica combinada</string>
     <string name="txt_fjr_tv_tiempo">Tiempo</string>
     <string name="txt_fjr_imgbtn_repetir_nota">Repetir nota</string>
     <string name="fjr_imgbtn_responder">Respuesta: %1$s</string>
@@ -47,4 +47,301 @@
     <string name="cd_fl_imgbtn_reproducir">Reproducir partitura</string>
     <string name="cd_fl_imgbtn_pausar">Pausar Reproducción</string>
     <string name="cd_fl_imgbtn_reiniciar">Reiniciar reproducción de partitura</string>
+    <string name="title_activity_informacion">InformacionActivity</string>
+
+    <string-array name="titulos_info_inicio">
+        <item>Información inicio</item>
+        <item>Menú superior</item>
+        <item>Botón “Nueva partitura”</item>
+        <item>Botón “Juegos rítmicos”</item>
+        <item>Lista de partituras anteriores</item>
+    </string-array>
+    <string-array name="descripciones_info_inicio">
+        <item>En este momento se encuentra en la pantalla de inicio, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Botón “Nueva partitura”.
+            \n3.	Botón “Juegos rítmicos”.
+            \n4.	Lista de partituras anteriores.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Inicio”.
+            \n\n2.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla “Inicio”.
+            \n\n3.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>Al presionar el botón, se abrirá una ventana emergente con los siguientes elementos:
+            \n\n1.	Etiqueta “Título de la partitura”.
+            \n\n2.	Cuadro de texto “Nombre de la partitura”: En este cuadro se puede poner un nombre a la nueva partitura, en caso de no hacerlo, se pondrá el nombre “Sin título”.
+            \n\n3.	Etiqueta “Autor”.
+            \n\n4.	Cuadro de texto “Nombre del autor”: En este cuadro se puede poner el nombre del autor de la nueva partitura, en caso de no hacerlo, se pondrá el nombre “Sin autor”.
+            \n\n5.	Botón "Cancelar": Regresa a la pantalla “inicio” sin crear una nueva partitura.
+            \n\n6.	Botón "Aceptar": Se creará la nueva partitura con la información proporcionada y se abrirá la pantalla de “edición”.
+        </item>
+        <item>Al presionar el botón, se abrirá la pantalla de juegos para practicar la altura y duración de las notas.</item>
+        <item>En caso de haber creado partituras anteriormente, se mostrará la etiqueta “Partituras anteriores” y debajo de esta se encontrará la lista que contiene todas estas partituras. Al pulsar alguna partitura de la lista aparecerá una ventana emergente con los siguientes elementos:
+            \n\n1.	Botón “Eliminar partitura”: Se eliminará la partitura seleccionada del dispositivo móvil.
+            \n\n2.	Botón “Editar partitura”: Se abrirá la pantalla de edición con la partitura elegida y los últimos cambios con los que se ha guardado.
+            \n\n3.	Botón "Cancelar": Regresa a la pantalla “inicio”.
+        </item>
+    </string-array>
+
+    <string-array name="titulos_info_juegos">
+        <item>Información juegos</item>
+        <item>Menú superior</item>
+        <item>Botón “Práctica de altura”</item>
+        <item>Botón “Práctica de duración”</item>
+        <item>Botón “Práctica combinada”</item>
+    </string-array>
+    <string-array name="descripciones_info_juegos">
+        <item>En este momento se encuentra en la pantalla principal de juegos, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Botón “Práctica de altura”.
+            \n3.	Botón “Práctica de duración”.
+            \n4.	Botón “Práctica combinada”.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Juegos”.
+            \n\n2.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla principal de juegos.
+            \n\n3.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>Al presionar el botón, empezará la práctica de altura, en donde deberá intentar acertar la altura de las notas que se reproducirán en un lapso de 1 minuto.</item>
+        <item>Al presionar el botón, empezará la práctica de duración, en donde deberá intentar acertar la duración de las notas que se reproducirán en un lapso de 1 minuto.</item>
+        <item>Al presionar el botón, empezará la práctica combinada, en donde deberá intentar acertar la altura y duración de las notas que se reproducirán en un lapso de 1 minuto.</item>
+    </string-array>
+
+    <string-array name="titulos_info_practica_altura">
+        <item>Información práctica de altura</item>
+        <item>Menú superior</item>
+        <item>Etiqueta de tiempo restante</item>
+        <item>Etiqueta de respuesta actual</item>
+        <item>Botones de acción</item>
+        <item>Menú inferior</item>
+    </string-array>
+    <string-array name="descripciones_info_practica_altura">
+        <item>En este momento se encuentra en la pantalla de práctica de altura, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Etiqueta de tiempo restante.
+            \n3.	Etiqueta de respuesta actual.
+            \n4.	Botones de acción.
+            \n5.	Menú inferior.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Juegos”.
+            \n\n2.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla de practica de altura.
+            \n\n3.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>Esta etiqueta le indicará el tiempo que falta para que termine la práctica, al llegar a 0 se mostrará una ventana emergente con los siguientes elementos:
+            \n\n1.	Etiqueta “Resultados”.
+            \n\n2.	Etiqueta “Aciertos”: Le indicará el número de aciertos que tuvo durante la práctica.
+            \n\n3.	Etiqueta “Fallos”: Le indicará el número de fallos que tuvo durante la práctica.
+            \n\n4.	Etiqueta “Precisión”: Le indicará el porcentaje de precisión con base a los aciertos y fallos que haya tenido en la práctica.
+            \n\n5.	Botón “Reiniciar”: Se repetirá la práctica en la que se encuentra actualmente.
+            \n\n6.	Botón “Salir”: Se redirigirá a la pantalla principal de juegos.
+        </item>
+        <item>Muestra la respuesta actual y puede ser cambiada mediante los botones de acción y la opción del menú inferior para agregar una alteración. Al acertar una nota o al iniciar la práctica, se establecerá en “Do”.</item>
+        <item>De izquierda a derecha, los botones de acción son:
+            \n\n1.	Botón “Subir altura”: Se aumentará la altura de la respuesta en el orden Do, Re, Mi, Fa, Sol, La, Si.
+            \n\n2.	Botón “Bajar altura”: Se disminuirá la altura de la respuesta en el orden Si, La, Sol, Fa, Mi, Re, Do.
+            \n\n3.	Botón “Reproducir nota”: Se reproducirá nuevamente la nota que se le está preguntando.
+            \n\n4.	Botón “Responder”: Se comprobará si su respuesta es correcta. Si es el caso, se le avisara y se reproducirá una nueva nota, si no, se le avisara que la respuesta es incorrecta.
+        </item>
+        <item>En el menú inferior se encuentra el siguiente elemento:
+            \n\n1.	Botón “Alteraciones”: Al pulsarlo, se abrirá una ventana emergente donde podrá agregar o quitar una alteración a la respuesta. La ventana se compone de los siguientes elementos.
+                \na.	Sostenido.
+                \nb.	Bemol.
+                \nc.	Sin alteración.
+        </item>
+    </string-array>
+
+    <string-array name="titulos_info_practica_duracion">
+        <item>Información práctica de duración</item>
+        <item>Menú superior</item>
+        <item>Etiqueta de tiempo restante</item>
+        <item>Etiqueta de respuesta actual</item>
+        <item>Botones de acción</item>
+        <item>Menú inferior</item>
+    </string-array>
+    <string-array name="descripciones_info_practica_duracion">
+        <item>En este momento se encuentra en la pantalla de práctica de duración, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Etiqueta de tiempo restante.
+            \n3.	Etiqueta de respuesta actual.
+            \n4.	Botones de acción.
+            \n5.	Menú inferior.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Juegos”.
+            \n\n2.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla de practica de duración.
+            \n\n3.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>Esta etiqueta le indicará el tiempo que falta para que termine la práctica, al llegar a 0 se mostrará una ventana emergente con los siguientes elementos:
+            \n\n1.	Etiqueta “Resultados”.
+            \n\n2.	Etiqueta “Aciertos”: Le indicará el número de aciertos que tuvo durante la práctica.
+            \n\n3.	Etiqueta “Fallos”: Le indicará el número de fallos que tuvo durante la práctica.
+            \n\n4.	Etiqueta “Precisión”: Le indicará el porcentaje de precisión con base a los aciertos y fallos que haya tenido en la práctica.
+            \n\n5.	Botón “Reiniciar”: Se repetirá la práctica en la que se encuentra actualmente.
+            \n\n6.	Botón “Salir”: Se redirigirá a la pantalla principal de juegos.
+        </item>
+        <item>Muestra la respuesta actual y puede ser cambiada mediante los botones de acción y la opción del menú inferior para agregar una alteración. Al acertar una nota o al iniciar la práctica, se establecerá en “Negra”.</item>
+        <item>De izquierda a derecha, los botones de acción son:
+            \n\n1.	Botón “Reproducir nota”: Se reproducirá nuevamente la nota que se le está preguntando.
+            \n\n2.	Botón “Responder”: Se comprobará si su respuesta es correcta. Si es el caso, se le avisara y se reproducirá una nueva nota, si no, se le avisara que la respuesta es incorrecta.
+        </item>
+        <item>En el menú inferior se encuentra el siguiente elemento:
+            \n\n1.	Botón “Figuras musicales”: Al pulsarlo, se abrirá una ventana emergente donde podrá elegir la duración de la nota. La ventana se compone de los siguientes elementos.
+                \na.	Redonda.
+                \nb.	Blanca.
+                \nc.	Negra.
+                \nd.	Corchea.
+                \ne.	Semicorchea.
+        </item>
+    </string-array>
+
+    <string-array name="titulos_info_practica_combinada">
+        <item>Información práctica combinada</item>
+        <item>Menú superior</item>
+        <item>Etiqueta de tiempo restante</item>
+        <item>Etiqueta de respuesta actual</item>
+        <item>Botones de acción</item>
+        <item>Menú inferior</item>
+    </string-array>
+    <string-array name="descripciones_info_practica_combinada">
+        <item>En este momento se encuentra en la pantalla de práctica combinada, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Etiqueta de tiempo restante.
+            \n3.	Etiqueta de respuesta actual.
+            \n4.	Botones de acción.
+            \n5.	Menú inferior.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Juegos”.
+            \n\n2.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla de practica combinada.
+            \n\n3.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>Esta etiqueta le indicará el tiempo que falta para que termine la práctica, al llegar a 0 se mostrará una ventana emergente con los siguientes elementos:
+            \n\n1.	Etiqueta “Resultados”.
+            \n\n2.	Etiqueta “Aciertos”: Le indicará el número de aciertos que tuvo durante la práctica.
+            \n\n3.	Etiqueta “Fallos”: Le indicará el número de fallos que tuvo durante la práctica.
+            \n\n4.	Etiqueta “Precisión”: Le indicará el porcentaje de precisión con base a los aciertos y fallos que haya tenido en la práctica.
+            \n\n5.	Botón “Reiniciar”: Se repetirá la práctica en la que se encuentra actualmente.
+            \n\n6.	Botón “Salir”: Se redirigirá a la pantalla principal de juegos.
+        </item>
+        <item>Muestra la respuesta actual y puede ser cambiada mediante los botones de acción y la opción del menú inferior para agregar una alteración. Al acertar una nota o al iniciar la práctica, se establecerá en “Do Negra”.</item>
+        <item>De izquierda a derecha, los botones de acción son:
+            \n\n1.	Botón “Subir altura”: Se aumentará la altura de la respuesta en el orden Do, Re, Mi, Fa, Sol, La, Si.
+            \n\n2.	Botón “Bajar altura”: Se disminuirá la altura de la respuesta en el orden Si, La, Sol, Fa, Mi, Re, Do.
+            \n\n3.	Botón “Reproducir nota”: Se reproducirá nuevamente la nota que se le está preguntando.
+            \n\n4.	Botón “Responder”: Se comprobará si su respuesta es correcta. Si es el caso, se le avisara y se reproducirá una nueva nota, si no, se le avisara que la respuesta es incorrecta.
+        </item>
+        <item>En el menú inferior se encuentra el siguiente elemento:
+            \n\n1.	Botón “Figuras musicales”: Al pulsarlo, se abrirá una ventana emergente donde podrá elegir la duración de la nota. La ventana se compone de los siguientes elementos.
+                \na.	Redonda.
+                \nb.	Blanca.
+                \nc.	Negra.
+                \nd.	Corchea.
+                \ne.	Semicorchea.
+            \n\n2.	Botón “Alteraciones”: Al pulsarlo, se abrirá una ventana emergente donde podrá agregar o quitar una alteración a la respuesta. La ventana se compone de los siguientes elementos.
+                \na.	Sostenido.
+                \nb.	Bemol.
+                \nc.	Sin alteración.
+        </item>
+    </string-array>
+
+    <string-array name="titulos_info_edicion">
+        <item>Información edición</item>
+        <item>Menú superior</item>
+        <item>Encabezado</item>
+        <item>Etiqueta de nota actual</item>
+        <item>Botones de acción</item>
+        <item>Menú inferior</item>
+    </string-array>
+    <string-array name="descripciones_info_edicion">
+        <item>En este momento se encuentra en la pantalla de edición, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Encabezado.
+            \n3.	Etiqueta de nota actual.
+            \n4.	Botones de acción.
+            \n5.	Menú inferior.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Edición”.
+            \n\n2.	Botón “Guardar”: Este botón le permite guardar los cambios realizados a una partitura, en caso de salir de la partitura sin presionarlo, se restablecerá la última versión guardada de la partitura.
+            \n\n3.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla de edición.
+            \n\n4.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>De izquierda a derecha, el encabezado se compone de los siguientes elementos:
+            \n\n1.	Botón “modo lectura”: Este botón le permitirá acceder a la pantalla de lectura, donde podrá reproducir la partitura actual y de esta forma saber cómo está quedando la pieza musical.
+            \n\n2.	Información de la partitura: Se compone de dos elementos dispuestos de manera vertical de la siguiente manera:
+                \na.	Cuadro de texto “Título de partitura”: Aquí podrá cambiar el nombre de la partitura actual si lo desea.
+                \nb.	Cuadro de texto “Nombre del autor”: Aquí podrá cambiar el nombre del autor de la partitura actual si lo desea.
+        </item>
+        <item>Esta etiqueta cumple 2 funciones como se menciona a continuación:
+            \n\n1.	Indicar nueva nota: Si no existe ninguna nota en la posición actual de la partitura, se mostrará el texto “Agregar nota”, este mensaje aparece una posición previa y posterior a cada nota de la partitura. Si usa los botones de acción para el cambio de altura de la nota, se mostrará el texto de la altura seleccionada actualmente, por ejemplo: “Do”.
+            \n\n2.	Indicar nota existente: Si agrega una nueva nota o selecciona una que ya se encuentra en la partitura, se mostrará un texto que contiene la altura de la nota, la alteración de la nota en caso de tenerla y la duración de la nota. Por ejemplo: “Do Negra” o “Do Sostenido Negra”.
+        </item>
+        <item>De izquierda a derecha, los botones de acción son:
+            \n\n1.	Botón “Desplazar a la izquierda”: Te desplazaras a la posición previa de la nota actual. El desplazamiento a la izquierda se hace en el orden Nota actual, Agregar nota previa, Nota previa.
+            \n\n2.	Botón “Desplazar a la derecha”: Te desplazaras a la posición posterior de la nota actual. El desplazamiento a la derecha se hace en el orden Nota actual, Agregar nota posterior, Nota posterior.
+            \n\n3.	Botón “Subir altura”: Se aumentará la altura de la nota actual o nueva en el orden Do, Re, Mi, Fa, Sol, La, Si.  Además, se reproducirá la nueva altura. En caso de encontrarse en una nota existente, se eliminará la alteración en caso de tenerla y se modificará su altura.
+            \n\n4.	Botón “Bajar altura”: Se disminuirá la altura de la nota actual o nueva en el orden Si, La, Sol, Fa, Mi, Re, Do. Además, se reproducirá la nueva altura, se eliminará la alteración en caso de tenerla y se modificará su altura.
+            \n\n5.	Botón “Añadir nota”: Este botón cumple 3 funciones como se mencionan a continuación:
+                \na.	Agregar una nueva nota: Si se selecciona una figura musical o un silencio en el menú inferior, y se encuentra en una posición para agregar nota, se agregará una nueva nota con su respectiva duración y su altura en caso de no ser un silencio.
+                \nb.	Agregar una alteración: Si se selecciona una alteración en el menú inferior, y se encuentra en una posición con una nota existente, se agregará una alteración a la nota siempre que sea válido.
+                \nc.	Eliminar nota: Si se pulsa la opción “Eliminar nota” en el menú inferior, y se encuentra en una posición con una nota existente, se eliminará la nota actual y se desplazará a la nota previa o a la nota posterior en caso de eliminar la primera nota.
+        </item>
+        <item>En el menú inferior se encuentran los siguientes elementos de izquierda a derecha:
+            \n\n1.	Botón “Figuras musicales”: Al pulsarlo, se abrirá una ventana emergente donde podrá elegir la duración de la nota. La ventana se compone de los siguientes elementos.
+                \na.	Redonda.
+                \nb.	Blanca.
+                \nc.	Negra.
+                \nd.	Corchea.
+                \ne.	Semicorchea.
+            \n\n2.	Botón “Silencios”: Al pulsarlo, se abrirá una ventana emergente donde podrá elegir el silencio que necesite. La ventana se compone de los siguientes elementos.
+                \na.	Silencio de redonda.
+                \nb.	Silencio de blanca.
+                \nc.	Silencio de negra.
+                \nd.	Silencio de corchea.
+                \ne.	Silencio de semicorchea.
+            \n\n3.	Botón “Alteraciones”: Al pulsarlo, se abrirá una ventana emergente donde podrá seleccionar la alteración que desea agregar o la opción para eliminarlas. La ventana se compone de los siguientes elementos.
+                \na.	Sostenido.
+                \nb.	Bemol.
+                \nc.	Sin alteración.
+            \n\n4.	Botón “Eliminar nota”: Al pulsarlo, podrá eliminar notas de la partitura con el botón “Agregar nota”.
+        </item>
+    </string-array>
+
+    <string-array name="titulos_info_lectura">
+        <item>Información lectura</item>
+        <item>Menú superior</item>
+        <item>Encabezado</item>
+        <item>Etiqueta de nota actual</item>
+        <item>Botones de acción</item>
+    </string-array>
+    <string-array name="descripciones_info_lectura">
+        <item>En este momento se encuentra en la pantalla de lectura, de arriba a abajo se compone de los siguientes elementos:
+            \n\n1.	Menú superior.
+            \n2.	Encabezado.
+            \n3.	Etiqueta de nota actual.
+            \n4.	Botones de acción.
+        </item>
+        <item>En el menú superior encontrará los siguientes elementos de izquierda a derecha:
+            \n\n1.	Título de la pantalla: Es una etiqueta que le indica la pantalla en la que se encuentra, en este caso tendrá el nombre “Edición”.
+            \n\n2.	Botón “Guardar”: Este botón le permite guardar los cambios realizados a una partitura, en caso de salir de la partitura sin presionarlo, se restablecerá la última versión guardada de la partitura.
+            \n\n3.	Botón “Información”: Este botón abrirá una guía de la pantalla en la que se encuentra, en este caso la guía de la pantalla de lectura.
+            \n\n4.	Botón “Ajustes”: Este botón abrirá la pantalla de ajustes donde podrá cambiar ciertas características de la aplicación a su gusto.
+        </item>
+        <item>De izquierda a derecha, el encabezado se compone de los siguientes elementos:
+            \n\n1.	Botón “modo edición”: Este botón le permitirá acceder a la pantalla de lectura, donde podrá reproducir la partitura actual y de esta forma saber cómo está quedando la pieza musical.
+            \n\n2.	Información de la partitura: Se compone de dos elementos dispuestos de manera vertical de la siguiente manera:
+                \na.	Etiqueta “Título de partitura”: Le indica el nombre de la partitura.
+                \nb.	Etiqueta “Nombre del autor”: Le indica el nombre del autor de la partitura.
+        </item>
+        <item>Indica la nota actual de la partitura.</item>
+        <item>De izquierda a derecha, los botones de acción son:
+            \n\n1.	Botón “Desplazar a la izquierda”: Te desplazaras a la nota previa de la nota actual a no ser que te encuentres en la primera nota. Además, se reproducirá esa nota.
+            \n\n2.	Botón “Desplazar a la derecha”: Te desplazaras a la nota posterior de la nota actual a no ser que te encuentres en la última nota. Además, se reproducirá esa nota.
+            \n\n3.	Botón “Reproducir partitura”: Se reproducirá la partitura sin necesidad de utilizar los botones de desplazamiento. La reproducción se detendrá hasta que finalice la partitura o al usar el botón “Pausar reproducción”.
+            \n\n4.	Botón “Pausar reproducción”: Detiene la reproducción de cualquier nota que este sonando en ese momento.
+            \n\n5.	Botón “Reiniciar partitura”: Volverás a la primer nota de la partitura.
+        </item>
+    </string-array>
 </resources>

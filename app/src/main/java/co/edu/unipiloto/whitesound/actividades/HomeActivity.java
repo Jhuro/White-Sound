@@ -317,7 +317,6 @@ public class HomeActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         menu.findItem(R.id.mt_guardar).setVisible(false);
-        menu.findItem(R.id.mt_info).setVisible(false);
         return true;
     }
 
@@ -327,11 +326,13 @@ public class HomeActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.mt_ajustes:
-                Intent intent = new Intent(this, AjustesActivity.class);
-                startActivity(intent);
+                Intent intentAjustes = new Intent(this, AjustesActivity.class);
+                startActivity(intentAjustes);
                 break;
             case R.id.mt_info:
-
+                Intent intentInformacion = new Intent(this, InformacionActivity.class);
+                intentInformacion.putExtra(InformacionActivity.PANTALLA, 0);
+                startActivity(intentInformacion);
                 break;
         }
         return super.onOptionsItemSelected(item);

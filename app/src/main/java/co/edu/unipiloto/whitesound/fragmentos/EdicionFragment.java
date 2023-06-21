@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.accessibility.AccessibilityEvent;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -297,7 +298,6 @@ public class EdicionFragment extends Fragment {
         elementoIndex = 0;
         fe_imgbtn_agregar_nota.setContentDescription("Añadir " + figura.toLowerCase());
         item.setTitle("Figuras musicales, " + figura.toLowerCase());
-
         cerrarDialogo();
     }
 
@@ -360,6 +360,7 @@ public class EdicionFragment extends Fragment {
         }
 
         elementoIndex = 2;
+        fe_imgbtn_agregar_nota.setContentDescription("Añadir " + alteracion.toLowerCase());
         item.setTitle("Alteraciones, " + alteracion.toLowerCase());
         cerrarDialogo();
     }

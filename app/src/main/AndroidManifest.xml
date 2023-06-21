@@ -12,6 +12,9 @@
         android:theme="@style/Theme.WhiteSound"
         tools:targetApi="31">
         <activity
+            android:name=".actividades.InformacionActivity"
+            android:exported="false" />
+        <activity
             android:name=".actividades.JuegosActivity"
             android:exported="false" />
         <activity

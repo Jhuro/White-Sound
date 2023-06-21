@@ -475,6 +475,10 @@ public class JuegosRitmicosFragment extends Fragment {
         altura.add("Si");
     }
 
+    public int getEleccion(){
+        return eleccion;
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

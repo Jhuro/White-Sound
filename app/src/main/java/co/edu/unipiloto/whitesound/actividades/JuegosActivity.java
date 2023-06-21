@@ -3,6 +3,7 @@ package co.edu.unipiloto.whitesound.actividades;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import co.edu.unipiloto.whitesound.R;
+import co.edu.unipiloto.whitesound.fragmentos.JuegosHomeFragment;
+import co.edu.unipiloto.whitesound.fragmentos.JuegosRitmicosFragment;
 
 public class JuegosActivity extends AppCompatActivity {
 
@@ -45,7 +48,6 @@ public class JuegosActivity extends AppCompatActivity {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         menu.findItem(R.id.mt_guardar).setVisible(false);
-        menu.findItem(R.id.mt_info).setVisible(false);
         return true;
     }
 
@@ -55,11 +57,31 @@ public class JuegosActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.mt_ajustes:
-                Intent intent = new Intent(this, AjustesActivity.class);
-                startActivity(intent);
+                Intent intentAjustes = new Intent(this, AjustesActivity.class);
+                startActivity(intentAjustes);
                 break;
             case R.id.mt_info:
+                Intent intentInformacion = new Intent(this, InformacionActivity.class);
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.aj_fragmentContainerView)
+                        .getChildFragmentManager().getFragments().get(0);
 
+                if(fragment instanceof JuegosHomeFragment){
+                    intentInformacion.putExtra(InformacionActivity.PANTALLA, 1);
+                } else{
+                    JuegosRitmicosFragment jrf = (JuegosRitmicosFragment) fragment;
+                    switch(jrf.getEleccion()){
+                        case 1:
+                            intentInformacion.putExtra(InformacionActivity.PANTALLA, 2);
+                            break;
+                        case 2:
+                            intentInformacion.putExtra(InformacionActivity.PANTALLA, 3);
+                            break;
+                        case 3:
+                            intentInformacion.putExtra(InformacionActivity.PANTALLA, 4);
+                            break;
+                    }
+                }
+                startActivity(intentInformacion);
                 break;
         }
         return super.onOptionsItemSelected(item);

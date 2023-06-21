@@ -13,4 +13,18 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="boton_color_d" parent="Theme.WhiteSound">
+        <item name="android:backgroundTint">@color/clr_d</item>
+        <item name="android:textColor">@color/clr_e</item>
+    </style>
+
+    <style name="Theme.WhiteSound.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.WhiteSound.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.WhiteSound.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

@@ -29,6 +29,7 @@ import java.io.ObjectOutputStream;
 import co.edu.unipiloto.whitesound.R;
 import co.edu.unipiloto.whitesound.clases.Partitura;
 import co.edu.unipiloto.whitesound.fragmentos.EdicionFragment;
+import co.edu.unipiloto.whitesound.fragmentos.JuegosHomeFragment;
 import co.edu.unipiloto.whitesound.fragmentos.LecturaFragment;
 
 public class EditarPartituraActivity extends AppCompatActivity {
@@ -158,7 +159,6 @@ public class EditarPartituraActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
-        menu.findItem(R.id.mt_info).setVisible(false);
         return true;
     }
 
@@ -251,11 +251,20 @@ public class EditarPartituraActivity extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.mt_ajustes:
-                Intent intent = new Intent(this, AjustesActivity.class);
-                startActivity(intent);
+                Intent intentAjustes = new Intent(this, AjustesActivity.class);
+                startActivity(intentAjustes);
                 break;
             case R.id.mt_info:
+                Intent intentInformacion = new Intent(this, InformacionActivity.class);
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.aep_fragmentContainerView)
+                        .getChildFragmentManager().getFragments().get(0);
 
+                if(fragment instanceof EdicionFragment){
+                    intentInformacion.putExtra(InformacionActivity.PANTALLA, 5);
+                }else{
+                    intentInformacion.putExtra(InformacionActivity.PANTALLA, 6);
+                }
+                startActivity(intentInformacion);
                 break;
             case R.id.mt_guardar:
                 guardarPartitura();
