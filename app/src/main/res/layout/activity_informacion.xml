@@ -2,21 +2,20 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_color_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/clr_b"
     tools:context=".actividades.InformacionActivity">
 
     <Button
         android:id="@+id/ai_btn_siguiente"
-        android:layout_width="wrap_content"
+        style="@style/boton_color_3"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/clr_d"
         android:text="Siguiente"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,14 +24,13 @@
 
     <Button
         android:id="@+id/ai_btn_atras"
+        style="@style/boton_color_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/clr_d"
         android:text="Atrás"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,13 +39,13 @@
 
     <TextView
         android:id="@+id/ai_tv_titulo"
+        style="@style/texto_color_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="Título"
-        android:textColor="@color/clr_e"
         android:textSize="42sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +54,7 @@
 
     <TextView
         android:id="@+id/ai_tv_descripcion"
+        style="@style/texto_color_1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -63,7 +62,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:text="Descripción"
-        android:textColor="@color/clr_e"
         android:textSize="24sp"
         android:textStyle="bold"
         android:scrollbars="vertical"

@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/elemento_lista_color_3"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_clr_d"
     android:padding="5dp">
 
     <ImageView
         android:id="@+id/lee_iv_icono"
+        style="@style/elemento_lista_color_3"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_gravity="center"
@@ -22,13 +23,13 @@
 
     <TextView
         android:id="@+id/lp_tv_titulo_partitura"
+        style="@style/elemento_lista_color_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:gravity="center|start"
         android:text="Titulo"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/lp_tv_por"
@@ -38,6 +39,7 @@
 
     <TextView
         android:id="@+id/lp_tv_autor_partitura"
+        style="@style/elemento_lista_color_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
@@ -45,7 +47,6 @@
         android:layout_marginBottom="2dp"
         android:gravity="center|start"
         android:text="Autor"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,13 +56,13 @@
 
     <TextView
         android:id="@+id/lp_tv_por"
+        style="@style/elemento_lista_color_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginBottom="2dp"
         android:gravity="center|start"
         android:text="Por:"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

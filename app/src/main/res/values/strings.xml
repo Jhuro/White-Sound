@@ -5,7 +5,7 @@
     <string name="txt_pdp_tv_autor">Autor</string>
     <string name="txt_pdp_et_nombre_autor">Nombre del autor</string>
     <string name="txt_pdp_tv_titulo_partitura">Título de la partitura</string>
-    <string name="txt_pdp_et_nombre_partitura">Nombre de la partitura</string>
+    <string name="txt_pdp_et_nombre_partitura">Nombre de partitura</string>
     <string name="txt_pdp_btn_cancelar">Cancelar</string>
     <string name="txt_pdp_btn_aceptar">Aceptar</string>
     <string name="txt_lp_tv_nombre_archivo_partitura">archivo</string>

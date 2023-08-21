@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import co.edu.unipiloto.whitesound.R;
+import co.edu.unipiloto.whitesound.actividades.JuegosActivity;
 
 
 public class JuegosHomeFragment extends Fragment {
@@ -41,6 +42,8 @@ public class JuegosHomeFragment extends Fragment {
     }
 
     public void initViews(View view){
+
+        ((JuegosActivity)getActivity()).cambiarTitulo("Juegos");
 
         final NavController navController = Navigation.findNavController(view);
 

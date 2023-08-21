@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_actividad_color_b"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/clr_b"
     tools:context=".actividades.AjustesActivity">
 
     <include
         android:id="@+id/aa_toolbar"
-        layout="@layout/toolbar"
-        />
+        layout="@layout/toolbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

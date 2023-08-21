@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_color_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/clr_b"
     tools:context=".fragmentos.LecturaFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,21 +13,20 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_modo_edicion"
+            style="@style/boton_imagen_color_3"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="4dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fe_imgbtn_modo_edicion"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_editar_partitura"
-            app:tint="@color/clr_a"
             app:layout_constraintBottom_toBottomOf="@+id/fl_tv_autor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/fl_tv_titulo" />
 
         <TextView
             android:id="@+id/fl_tv_titulo"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -35,7 +34,6 @@
             android:layout_marginEnd="4dp"
             android:gravity="center"
             android:text="@string/txt_aep_tv_titulo"
-            android:textColor="@color/clr_e"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -44,6 +42,7 @@
 
         <TextView
             android:id="@+id/fl_tv_autor"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
@@ -51,7 +50,6 @@
             android:layout_marginEnd="4dp"
             android:gravity="center"
             android:text="@string/txt_aep_tv_autor"
-            android:textColor="@color/clr_e"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -60,14 +58,13 @@
 
         <ImageButton
             android:id="@+id/fl_imgbtn_desplazar_izq"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_desplazar_izq"
-            android:padding="10dp"
             android:rotation="-180"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_desplazar"
@@ -77,14 +74,13 @@
 
         <ImageButton
             android:id="@+id/fl_imgbtn_desplazar_der"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_desplazar_der"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_desplazar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -93,14 +89,13 @@
 
         <ImageButton
             android:id="@+id/fl_imgbtn_reproducir"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fl_imgbtn_reproducir"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_reproducir"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -109,14 +104,13 @@
 
         <ImageButton
             android:id="@+id/fl_imgbtn_pausar"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fl_imgbtn_pausar"
-            android:padding="10dp"
             android:rotation="180"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_pausar"
@@ -126,14 +120,13 @@
 
         <ImageButton
             android:id="@+id/fl_imgbtn_reiniciar"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fl_imgbtn_reiniciar"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_reiniciar"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -142,11 +135,11 @@
 
         <TextView
             android:id="@+id/fl_tv_nota"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_tv_nota"
             android:textAlignment="center"
-            android:textColor="@color/clr_e"
             android:textSize="42sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/fl_imgbtn_reproducir"

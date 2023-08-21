@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_color_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/clr_b"
     tools:context=".fragmentos.EdicionFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,12 +13,11 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_modo_lectura"
+            style="@style/boton_imagen_color_3"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="4dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fe_imgbtn_modo_lectura"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_lectura"
             app:layout_constraintBottom_toBottomOf="@+id/fe_et_autor"
@@ -27,6 +26,7 @@
 
         <EditText
             android:id="@+id/fe_et_titulo"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
@@ -36,7 +36,6 @@
             android:gravity="center"
             android:inputType="textPersonName"
             android:text="@string/txt_aep_tv_titulo"
-            android:textColor="@color/clr_e"
             android:textSize="32sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,6 +46,7 @@
 
         <EditText
             android:id="@+id/fe_et_autor"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
@@ -56,7 +56,6 @@
             android:gravity="center"
             android:inputType="textPersonName"
             android:text="@string/txt_aep_tv_autor"
-            android:textColor="@color/clr_e"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -74,14 +73,13 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_desplazar_izq"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_desplazar_izq"
-            android:padding="10dp"
             android:rotation="-180"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_desplazar"
@@ -91,14 +89,13 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_desplazar_der"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_desplazar_der"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_desplazar"
             app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
@@ -107,14 +104,13 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_subir_altura"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_subir_altura"
-            android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_altura"
             app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
@@ -123,14 +119,13 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_bajar_altura"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_imgbtn_bajar_altura"
-            android:padding="10dp"
             android:rotation="180"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_altura"
@@ -140,14 +135,13 @@
 
         <ImageButton
             android:id="@+id/fe_imgbtn_añadir_nota"
+            style="@style/boton_imagen_color_3"
             android:layout_width="0dp"
             android:layout_height="67dp"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/bg_clr_e"
             android:contentDescription="@string/cd_fe_imgbtn_añadir_nota"
-            android:padding="4dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_negra"
             app:layout_constraintBottom_toTopOf="@+id/fe_menu_inferior"
@@ -156,11 +150,11 @@
 
         <TextView
             android:id="@+id/fe_tv_nota"
+            style="@style/texto_color_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/txt_tv_nota"
             android:textAlignment="center"
-            android:textColor="@color/clr_e"
             android:textSize="42sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/fe_imgbtn_subir_altura"

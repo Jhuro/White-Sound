@@ -14,6 +14,9 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 import co.edu.unipiloto.whitesound.R;
 import co.edu.unipiloto.whitesound.fragmentos.JuegosHomeFragment;
@@ -22,7 +25,9 @@ import co.edu.unipiloto.whitesound.fragmentos.JuegosRitmicosFragment;
 public class JuegosActivity extends AppCompatActivity {
 
     private MediaPlayer[] notas;
+    private MediaPlayer reloj;
     private Handler handler;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +42,14 @@ public class JuegosActivity extends AppCompatActivity {
     }
 
     public void initActivity(){
-        Toolbar toolbar = findViewById(R.id.aj_toolbar);
-        toolbar.setTitle("Juegos");
+        toolbar = findViewById(R.id.aj_toolbar);
+        cambiarTitulo("Juegos");
         setSupportActionBar(toolbar);
         handler = new Handler();
+    }
+
+    public void cambiarTitulo(String titulo){
+        toolbar.setTitle(titulo);
     }
 
     //Inflar menú del toolbar
@@ -103,6 +112,17 @@ public class JuegosActivity extends AppCompatActivity {
                 MediaPlayer.create(this, R.raw.t_gs_ab),
                 MediaPlayer.create(this, R.raw.t_as_bb),
         };
+
+        reloj = MediaPlayer.create(this, R.raw.reloj);
+    }
+
+    public void reproducirReloj() throws IOException {
+
+        if(reloj.isPlaying()){
+            reloj.stop();
+            reloj.prepare();
+        }
+        reloj.start();
     }
 
     public void reproducirNota(int nota, int duracion) {
@@ -143,6 +163,7 @@ public class JuegosActivity extends AppCompatActivity {
         super.onDestroy();
 
         handler.removeCallbacksAndMessages(null);
+        reloj.release();
         for(MediaPlayer mp : notas){
             mp.release();
         }

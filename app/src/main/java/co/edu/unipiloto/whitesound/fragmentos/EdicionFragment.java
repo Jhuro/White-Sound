@@ -30,6 +30,7 @@ import java.util.List;
 
 import co.edu.unipiloto.whitesound.actividades.EditarPartituraActivity;
 import co.edu.unipiloto.whitesound.R;
+import co.edu.unipiloto.whitesound.actividades.JuegosActivity;
 import co.edu.unipiloto.whitesound.adaptadores.AdaptadorListaElementosEdicion;
 import co.edu.unipiloto.whitesound.clases.ListaDE;
 import co.edu.unipiloto.whitesound.clases.Nota;
@@ -93,7 +94,7 @@ public class EdicionFragment extends Fragment {
     public void initViews(View view){
 
         final NavController navController = Navigation.findNavController(view);
-
+        ((EditarPartituraActivity)getActivity()).cambiarTitulo("Edición");
         fe_et_titulo = view.findViewById(R.id.fe_et_titulo);
         fe_et_autor = view.findViewById(R.id.fe_et_autor);
         BottomNavigationView fe_menu_inferior = view.findViewById(R.id.fe_menu_inferior);
@@ -407,14 +408,17 @@ public class EdicionFragment extends Fragment {
         if(!nuevaNota && !partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()){
             alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
         }
+
         if(partituraIndex > 0 && nuevaNota) {
             nuevaNota = false;
             partituraIndex--;
         }else{
             nuevaNota = true;
         }
+
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
         }else{
             fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
         }
@@ -430,8 +434,10 @@ public class EdicionFragment extends Fragment {
         }else if(partituraIndex != partituraLDE.getSize()){
             nuevaNota = false;
         }
+
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
         }else{
             fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
         }

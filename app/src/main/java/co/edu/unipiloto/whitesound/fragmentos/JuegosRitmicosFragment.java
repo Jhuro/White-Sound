@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class JuegosRitmicosFragment extends Fragment {
     private List<String> figurasMusicales, alteracionesMusicales, altura;
     private NavController navController;
     private Handler handler;
-    private  Resources res;
+    private Resources res;
 
     public JuegosRitmicosFragment() {
     }
@@ -138,6 +139,8 @@ public class JuegosRitmicosFragment extends Fragment {
                 notaPregunta.setDuracion(null);
                 notaRespuesta.setDuracion(null);
                 generarAltura();
+
+                ((JuegosActivity)getActivity()).cambiarTitulo("Altura");
                 break;
             case 2:
                 fjr_imgbtn_subir_altura.setVisibility(View.GONE);
@@ -150,6 +153,8 @@ public class JuegosRitmicosFragment extends Fragment {
                 notaRespuesta.setAltura(null);
                 alturaTemp = (int) (Math.random()*12);
                 generarDuracion();
+
+                ((JuegosActivity)getActivity()).cambiarTitulo("Duración");
                 break;
             case 3:
                 fjr_menu_inferior.getMenu().findItem(R.id.miep_borrar).setVisible(false);
@@ -157,6 +162,8 @@ public class JuegosRitmicosFragment extends Fragment {
 
                 generarAltura();
                 generarDuracion();
+
+                ((JuegosActivity)getActivity()).cambiarTitulo("Combinada");
                 break;
         }
 
@@ -428,9 +435,15 @@ public class JuegosRitmicosFragment extends Fragment {
             public void run() {
                 if(tiempo > 0){
                     tiempo--;
+                    try {
+                        ((JuegosActivity)getActivity()).reproducirReloj();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
                     fjr_tv_tiempo.setText(String.valueOf(tiempo));
                     handler.postDelayed(this, 1000);
                 }else{
+                    Toast.makeText(getContext(), "Fin de la práctica", Toast.LENGTH_SHORT).show();
                     abrirDialogoDeResultados();
                 }
             }

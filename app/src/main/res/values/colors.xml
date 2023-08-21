@@ -13,4 +13,11 @@
     <color name="clr_c">#FAC5BB</color>
     <color name="clr_d">#CF713F</color>
     <color name="clr_e">#4C3F5D</color>
+
+    <color name="color_fondo_1">#000000</color>
+    <color name="color_sobrepuesto_1">#FFFFFF</color>
+    <color name="color_fondo_2">#E2001A</color>
+    <color name="color_sobrepuesto_2">#FEED00</color>
+    <color name="color_fondo_3">#91BD10</color>
+    <color name="color_sobrepuesto_3">#014495</color>
 </resources>

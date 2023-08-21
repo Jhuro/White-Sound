@@ -2,21 +2,21 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_popup_color_2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_clr_e"
     android:layout_gravity="center"
     android:padding="16dp">
 
     <TextView
         android:id="@+id/prj_tv_resultados"
+        style="@style/texto_color_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/txt_prj_tv_resultados"
-        android:textColor="@color/clr_b"
         android:gravity="center"
-        android:textSize="35sp"
+
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,12 +24,11 @@
 
     <TextView
         android:id="@+id/prj_tv_aciertos"
+        style="@style/texto_color_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/txt_prj_tv_aciertos"
-        android:textColor="@color/clr_a"
-        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,12 +36,11 @@
 
     <TextView
         android:id="@+id/prj_tv_fallos"
+        style="@style/texto_color_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/txt_prj_tv_fallos"
-        android:textColor="@color/clr_a"
-        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,12 +48,11 @@
 
     <TextView
         android:id="@+id/prj_tv_precision"
+        style="@style/texto_color_2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/txt_prj_tv_precision"
-        android:textColor="@color/clr_a"
-        android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +60,12 @@
 
     <Button
         android:id="@+id/prj_btn_reiniciar"
+        style="@style/boton_color_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="2dp"
-        android:backgroundTint="@color/clr_b"
         android:text="@string/txt_prj_btn_reiniciar"
-        android:textColor="@color/clr_e"
         android:textSize="14pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/prj_btn_salir"
@@ -78,13 +74,12 @@
 
     <Button
         android:id="@+id/prj_btn_salir"
+        style="@style/boton_color_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="2dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/clr_b"
         android:text="@string/txt_prj_btn_salir"
-        android:textColor="@color/clr_e"
         android:textSize="14pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

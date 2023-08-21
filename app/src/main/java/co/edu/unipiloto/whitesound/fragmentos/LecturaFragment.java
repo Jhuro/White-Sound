@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +91,7 @@ public class LecturaFragment extends Fragment {
     public void initViews(View view) {
 
         final NavController navController = Navigation.findNavController(view);
-
+        ((EditarPartituraActivity)getActivity()).cambiarTitulo("Lectura");
         Partitura partitura = ((EditarPartituraActivity) getActivity()).getPartituraTemp();
 
         TextView fl_tv_titulo = view.findViewById(R.id.fl_tv_titulo);
@@ -245,11 +246,14 @@ public class LecturaFragment extends Fragment {
                     figurasMusicales.indexOf(nota.getDuracion()));
         }
 
-        if (reproduccion && partituraIndex == partituraLDE.getSize() - 1) {
-            reproduccion = false;
-            fl_imgbtn_reproducir.setEnabled(true);
-            fl_imgbtn_desplazar_izq.setEnabled(true);
-            fl_imgbtn_desplazar_der.setEnabled(true);
+        if (partituraIndex == partituraLDE.getSize() - 1) {
+            if(reproduccion) {
+                reproduccion = false;
+                fl_imgbtn_reproducir.setEnabled(true);
+                fl_imgbtn_desplazar_izq.setEnabled(true);
+                fl_imgbtn_desplazar_der.setEnabled(true);
+            }
+            Toast.makeText(getContext(), "Fin de la partitura", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -290,6 +294,7 @@ public class LecturaFragment extends Fragment {
                 fl_imgbtn_reproducir.setEnabled(true);
                 fl_imgbtn_desplazar_izq.setEnabled(true);
                 fl_imgbtn_desplazar_der.setEnabled(true);
+                Toast.makeText(getContext(), "Fin de la partitura", Toast.LENGTH_SHORT).show();
             }
         }
     }

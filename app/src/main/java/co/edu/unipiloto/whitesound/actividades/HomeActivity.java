@@ -184,24 +184,27 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         //Guardar archivo de la nueva partitura
-        guardarPartitura(nombrePartitura, nombreAutor);
+        String nombreArchivo = guardarPartitura(nombrePartitura, nombreAutor);
 
         //Abrir editor de la última partitura creada
-        editarPartitura(-1);
+        editarPartitura(archivos.indexOf(nombreArchivo));
     }
 
     //Editar una partitura
     private void editarPartitura(int i) {
 
         //Inicializar variable que contiene el nombre del archivo de la partitura
-        String nombreArchivo;
+        //String nombreArchivo = "";
+        String nombreArchivo = archivos.get(i);
 
         //Asignar nombre del archvio de partitura que se va a editar
+        /*
         if (i >= 0) {
             nombreArchivo = archivos.get(i);
         } else {
-            nombreArchivo = archivos.get(archivos.size() - 1);
+           nombreArchivo = archivos.get(archivos.size() - 1);
         }
+        */
 
         //Inicializar el intent de la actividad editor de partitura
         Intent intent = new Intent(this, EditarPartituraActivity.class);
@@ -214,7 +217,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void guardarPartitura(String tituloPartitura, String autor) {
+    private String guardarPartitura(String tituloPartitura, String autor) {
 
         //Reemplazar a minusculas y quitar espacios en blanco en el título de la partitura.
         //Asignar nombre del archivo
@@ -241,6 +244,8 @@ public class HomeActivity extends AppCompatActivity {
 
         //Recargar la lista de partituras
         recargarListaPartituras();
+
+        return nombreArchivo;
     }
 
     //Eliminar una partitura

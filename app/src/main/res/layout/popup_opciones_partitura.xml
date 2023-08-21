@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_clr_e"
+    style="@style/fondo_popup_color_2"
     android:layout_gravity="center"
     android:padding="16dp">
 
     <ImageButton
         android:id="@+id/pop_imgbtn_eliminar_partitura"
+        style="@style/boton_imagen_color_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/bg_clr_d"
         android:contentDescription="@string/txt_pap_imgbtn_eliminar_partitura"
         android:padding="16dp"
         android:scaleType="fitCenter"
@@ -24,10 +24,10 @@
 
     <ImageButton
         android:id="@+id/pop_imgbtn_editar_partitura"
+        style="@style/boton_imagen_color_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:background="@drawable/bg_clr_d"
         android:contentDescription="@string/txt_pap_imgbtn_editar_partitura"
         android:padding="16dp"
         android:scaleType="fitCenter"
@@ -38,13 +38,12 @@
 
     <Button
         android:id="@+id/pop_btn_cancelar"
+        style="@style/boton_color_3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/clr_b"
         android:text="@string/txt_pdp_btn_cancelar"
-        android:textColor="@color/clr_e"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

@@ -2,12 +2,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
+    style="@style/fondo_color_2"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/clr_e"
     android:elevation="4dp"
     app:title="Título actividad"
-    app:titleTextColor="@color/clr_a"
-    app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1">
+    app:titleTextAppearance="@style/texto_color_2">
 
 </androidx.appcompat.widget.Toolbar>

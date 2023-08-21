@@ -2,9 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/fondo_color_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/clr_b"
     tools:context=".fragmentos.JuegosHomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,14 +13,13 @@
 
         <Button
             android:id="@+id/fjh_btn_altura"
+            style="@style/boton_color_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="2dp"
-            android:backgroundTint="@color/clr_d"
             android:text="@string/txt_fjh_btn_altura"
-            android:textColor="@color/clr_e"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/fjh_btn_duracion"
@@ -30,15 +29,14 @@
 
         <Button
             android:id="@+id/fjh_btn_duracion"
+            style="@style/boton_color_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="2dp"
-            android:backgroundTint="@color/clr_d"
             android:text="@string/txt_fjh_btn_duracion"
-            android:textColor="@color/clr_e"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/fjh_btn_combinado"
@@ -49,14 +47,13 @@
 
         <Button
             android:id="@+id/fjh_btn_combinado"
+            style="@style/boton_color_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="@color/clr_d"
             android:text="@string/txt_fjh_btn_combinado"
-            android:textColor="@color/clr_e"
             android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
