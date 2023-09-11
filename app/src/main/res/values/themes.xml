@@ -14,6 +14,17 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TemaAjustes" parent="Theme.WhiteSound">
+
+        <item name="android:textColor">@color/color_sobrepuesto_2</item>
+        <item name="colorAccent">@color/color_sobrepuesto_2</item>
+        <item name="colorPrimary">@color/color_sobrepuesto_1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColorSecondary">@color/color_sobrepuesto_1</item>
+        <item name="android:textSize">28sp</item>
+    </style>
+
+
     <style name="fondo_color_1" parent="Theme.WhiteSound">
         <item name="android:background">@color/color_fondo_1</item>
     </style>
@@ -68,30 +79,6 @@
 
     <style name="menu_inferior_color_3" parent="Theme.WhiteSound">
         <item name="android:background">@color/color_fondo_3</item>
-    </style>
-
-    <style name="fondo_actividad_color_b" parent="Theme.WhiteSound">
-        <item name="android:background">@color/clr_b</item>
-    </style>
-
-    <style name="boton_imagen_color_e" parent="Theme.WhiteSound">
-        <item name="android:background">@drawable/bg_clr_e</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:drawableTint">@color/clr_a</item>
-    </style>
-
-    <style name="boton_color_d" parent="Theme.WhiteSound">
-        <item name="android:background">@drawable/bg_clr_d</item>
-        <item name="android:textColor">@color/clr_e</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:drawableTint">@color/clr_e</item>
-    </style>
-
-    <style name="boton_color_b" parent="Theme.WhiteSound">
-        <item name="android:background">@drawable/bg_clr_b</item>
-        <item name="android:textColor">@color/clr_e</item>
-        <item name="android:padding">10dp</item>
-        <item name="android:drawableTint">@color/clr_e</item>
     </style>
 
     <style name="Theme.WhiteSound.NoActionBar">

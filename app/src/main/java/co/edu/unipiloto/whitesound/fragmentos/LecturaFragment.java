@@ -305,6 +305,8 @@ public class LecturaFragment extends Fragment {
         fl_imgbtn_reproducir.setEnabled(true);
         fl_imgbtn_desplazar_izq.setEnabled(true);
         fl_imgbtn_desplazar_der.setEnabled(true);
+
+        Toast.makeText(getContext(), "Reproducción pausada", Toast.LENGTH_SHORT).show();
     }
 
     public void reiniciarPartitura(){
@@ -319,6 +321,8 @@ public class LecturaFragment extends Fragment {
 
             Nota nota = partituraLDE.obtenerNotaEnPosicion(partituraIndex);
             fl_tv_nota.setText(nota.toString());
+
+            Toast.makeText(getContext(), "Partitura reiniciada", Toast.LENGTH_SHORT).show();
         }
     }
 

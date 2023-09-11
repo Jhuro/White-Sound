@@ -126,23 +126,32 @@ public class HomeActivity extends AppCompatActivity {
         dialogo.show();
 
         //Inicializar vistas del diálogo
-        ImageButton pop_imgbtn_eliminar_partitura = dialogo.findViewById(R.id.pop_imgbtn_eliminar_partitura);
         ImageButton pop_imgbtn_editar_partitura = dialogo.findViewById(R.id.pop_imgbtn_editar_partitura);
+        ImageButton pop_imgbtn_lectura_partitura = dialogo.findViewById(R.id.pop_imgbtn_lectura_partitura);
+        ImageButton pop_imgbtn_eliminar_partitura = dialogo.findViewById(R.id.pop_imgbtn_eliminar_partitura);
         Button pop_btn_cancelar = dialogo.findViewById(R.id.pop_btn_cancelar);
-
-        //Click listener del botón para eliminar una partitura
-        pop_imgbtn_eliminar_partitura.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                eliminarPartitura(i);
-            }
-        });
 
         //Click listener del botón para editar una partitura
         pop_imgbtn_editar_partitura.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 editarPartitura(i);
+            }
+        });
+
+        //Click listener del botón para leer una partitura
+        pop_imgbtn_lectura_partitura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                leerPartitura(i);
+            }
+        });
+
+        //Click listener del botón para eliminar una partitura
+        pop_imgbtn_eliminar_partitura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminarPartitura(i);
             }
         });
 
@@ -197,18 +206,26 @@ public class HomeActivity extends AppCompatActivity {
         //String nombreArchivo = "";
         String nombreArchivo = archivos.get(i);
 
-        //Asignar nombre del archvio de partitura que se va a editar
-        /*
-        if (i >= 0) {
-            nombreArchivo = archivos.get(i);
-        } else {
-           nombreArchivo = archivos.get(archivos.size() - 1);
-        }
-        */
+        //Inicializar el intent de la actividad editor de partitura
+        Intent intent = new Intent(this, EditarPartituraActivity.class);
+        intent.putExtra(EditarPartituraActivity.ARCHIVO, nombreArchivo);
+
+        //Cerrar el diálogo para crear una nueva partitura
+        cerrarDialogo();
+
+        //Iniciar actividad editor de partitura
+        startActivity(intent);
+    }
+
+    //Leer una partitura
+    private void leerPartitura(int i) {
+
+        String nombreArchivo = archivos.get(i);
 
         //Inicializar el intent de la actividad editor de partitura
         Intent intent = new Intent(this, EditarPartituraActivity.class);
         intent.putExtra(EditarPartituraActivity.ARCHIVO, nombreArchivo);
+        intent.putExtra(EditarPartituraActivity.LECTURA, true);
 
         //Cerrar el diálogo para crear una nueva partitura
         cerrarDialogo();
@@ -321,7 +338,10 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        menu.findItem(R.id.mt_ajustes).setVisible(false);
         menu.findItem(R.id.mt_guardar).setVisible(false);
+        menu.findItem(R.id.mt_inicio).setVisible(false);
+        menu.findItem(R.id.mt_volver).setVisible(false);
         return true;
     }
 
@@ -330,15 +350,13 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.mt_ajustes:
-                Intent intentAjustes = new Intent(this, AjustesActivity.class);
-                startActivity(intentAjustes);
-                break;
             case R.id.mt_info:
                 Intent intentInformacion = new Intent(this, InformacionActivity.class);
                 intentInformacion.putExtra(InformacionActivity.PANTALLA, 0);
                 startActivity(intentInformacion);
                 break;
+            case R.id.mt_salir:
+                this.finish();
         }
         return super.onOptionsItemSelected(item);
     }

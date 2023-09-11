@@ -97,6 +97,10 @@ public class InformacionActivity extends AppCompatActivity {
                 titulos = resources.getStringArray(R.array.titulos_info_lectura);
                 descripciones = resources.getStringArray(R.array.descripciones_info_lectura);
                 break;
+            case 7:
+                titulos = resources.getStringArray(R.array.titulos_info_ajustes);
+                descripciones = resources.getStringArray(R.array.descripciones_info_ajustes);
+                break;
         }
 
         ai_tv_titulo.setText(titulos[posicion]);

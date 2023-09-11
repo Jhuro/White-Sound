@@ -112,7 +112,7 @@ public class JuegosRitmicosFragment extends Fragment {
         alturaIndex = 0;
         correctos = 0;
         incorrectos = 0;
-        tiempo = 60;
+        tiempo = 120;
 
         eleccion = getArguments().getInt("eleccion");
         notaPregunta = new Nota(altura.get(0), figurasMusicales.get(2));
@@ -255,6 +255,7 @@ public class JuegosRitmicosFragment extends Fragment {
 
                 notaRespuesta.setDuracion(figurasMusicales.get(i));
                 fjr_tv_respuesta.setText(notaRespuesta.toString());
+                Toast.makeText(getContext(), notaRespuesta.toString(), Toast.LENGTH_SHORT).show();
                 fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
                 cerrarDialogo();
             }
@@ -284,6 +285,7 @@ public class JuegosRitmicosFragment extends Fragment {
                     notaRespuesta.setAlteracion(alteracionesMusicales.get(i));
                 }
                 fjr_tv_respuesta.setText(notaRespuesta.toString());
+                Toast.makeText(getContext(), notaRespuesta.toString(), Toast.LENGTH_SHORT).show();
                 fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
                 cerrarDialogo();
             }
@@ -316,7 +318,7 @@ public class JuegosRitmicosFragment extends Fragment {
             public void onClick(View view) {
                 correctos = 0;
                 incorrectos = 0;
-                tiempo = 60;
+                tiempo = 120;
                 switch (eleccion) {
                     case 1:
                         generarAltura();
@@ -360,6 +362,7 @@ public class JuegosRitmicosFragment extends Fragment {
             notaRespuesta.setAltura(altura.get(alturaIndex));
         }
         fjr_tv_respuesta.setText(notaRespuesta.toString());
+        Toast.makeText(getContext(), notaRespuesta.toString(), Toast.LENGTH_SHORT).show();
         fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
     }
 
@@ -371,6 +374,7 @@ public class JuegosRitmicosFragment extends Fragment {
         }
 
         fjr_tv_respuesta.setText(notaRespuesta.toString());
+        Toast.makeText(getContext(), notaRespuesta.toString(), Toast.LENGTH_SHORT).show();
         fjr_imgbtn_responder.setContentDescription(res.getString(R.string.fjr_imgbtn_responder, notaRespuesta.toString()));
     }
 

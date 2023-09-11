@@ -6,17 +6,38 @@
         android:title="Guardar"
         android:contentDescription="Guardar"
         android:icon="@drawable/ic_guardar"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/mt_info"
         android:title="Información"
         android:contentDescription="Información"
         android:icon="@drawable/ic_informacion"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
     <item
         android:id="@+id/mt_ajustes"
         android:title="@string/txt_mt_ajustes"
         android:contentDescription="@string/txt_mt_ajustes"
         android:icon="@drawable/ic_ajustes"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mt_inicio"
+        android:title="@string/txt_mt_inicio"
+        android:contentDescription="@string/txt_mt_inicio"
+        android:icon="@drawable/ic_inicio"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mt_volver"
+        android:title="@string/txt_mt_volver"
+        android:contentDescription="@string/txt_mt_volver"
+        android:icon="@drawable/ic_volver"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/mt_salir"
+        android:title="@string/txt_mt_salir"
+        android:contentDescription="@string/txt_mt_salir"
+        android:icon="@drawable/ic_salir"
+        app:showAsAction="always"/>
 </menu>

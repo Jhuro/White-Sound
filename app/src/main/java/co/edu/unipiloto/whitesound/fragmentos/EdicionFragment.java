@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -38,6 +39,7 @@ import co.edu.unipiloto.whitesound.clases.Partitura;
 
 public class EdicionFragment extends Fragment {
 
+    private NavController navController;
     private EditText fe_et_titulo, fe_et_autor;
     private TextView fe_tv_nota;
     private ImageButton fe_imgbtn_agregar_nota;
@@ -67,8 +69,8 @@ public class EdicionFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = Navigation.findNavController(view);
         initViews(view);
-
         if(savedInstanceState != null) {
             partituraIndex = savedInstanceState.getInt("partituraIndex");
             nuevaNota = savedInstanceState.getBoolean("nuevaNota");
@@ -77,9 +79,19 @@ public class EdicionFragment extends Fragment {
                     alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
                 }
                 fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+                Toast.makeText(getContext(), "Nota " + (partituraIndex+1) + ": " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
             }else{
                 fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
+                Toast.makeText(getContext(), "Agregar nota", Toast.LENGTH_SHORT).show();
             }
+        }
+
+        if(((EditarPartituraActivity) getActivity()).getModoLectura()){
+            partitura.setTitulo(fe_et_titulo.getText().toString());
+            partitura.setAutor(fe_et_autor.getText().toString());
+            ((EditarPartituraActivity)getActivity()).setPartituraTemp(partitura);
+            ((EditarPartituraActivity)getActivity()).setModoLectura(false);
+            navController.navigate(R.id.lecturaFragment);
         }
     }
 
@@ -93,7 +105,6 @@ public class EdicionFragment extends Fragment {
 
     public void initViews(View view){
 
-        final NavController navController = Navigation.findNavController(view);
         ((EditarPartituraActivity)getActivity()).cambiarTitulo("Edición");
         fe_et_titulo = view.findViewById(R.id.fe_et_titulo);
         fe_et_autor = view.findViewById(R.id.fe_et_autor);
@@ -125,12 +136,14 @@ public class EdicionFragment extends Fragment {
         if(partituraLDE.isEmpty()){
             nuevaNota = true;
             fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
+            Toast.makeText(getContext(), "Agregar nota", Toast.LENGTH_SHORT).show();
         }else{
             if(!partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()){
                 alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
             }
             nuevaNota = false;
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            Toast.makeText(getContext(), "Nota " + (partituraIndex+1) + ": " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
         }
 
         fe_imgbtn_subir_altura.setOnClickListener(new View.OnClickListener() {
@@ -419,8 +432,10 @@ public class EdicionFragment extends Fragment {
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
             alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
+            Toast.makeText(getContext(), "Nota " + (partituraIndex+1) + ": " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
         }else{
             fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
+            Toast.makeText(getContext(), "Agregar nota", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -438,8 +453,10 @@ public class EdicionFragment extends Fragment {
         if(!partituraLDE.isEmpty() && !nuevaNota){
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
             alturaIndex = altura.indexOf(partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAltura());
+            Toast.makeText(getContext(), "Nota " + (partituraIndex+1) + ": " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
         }else{
             fe_tv_nota.setText(R.string.fe_tv_agregar_nota);
+            Toast.makeText(getContext(), "Agregar nota", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -459,14 +476,16 @@ public class EdicionFragment extends Fragment {
                 if(nuevaNota) {
                     partituraLDE.agregarNotaEnPosicion(new Nota(altura.get(alturaIndex), figurasMusicales.get(duracionIndex)), partituraIndex);
                     nuevaNota = false;
+                    Toast.makeText(getContext(), "Se añadió " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
                 } else{
+                    String notaAnterior = partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString();
                     if(partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()) {
                         partituraLDE.cambiarNotaEnPosicion(new Nota(altura.get(alturaIndex), figurasMusicales.get(duracionIndex)), partituraIndex);
                     }else{
                         partituraLDE.obtenerNotaEnPosicion(partituraIndex).setDuracion(figurasMusicales.get(duracionIndex));
                     }
+                    Toast.makeText(getContext(), "Se cambió " + notaAnterior + " por " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
                 }
-
                 fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
                 break;
             //Silencio
@@ -474,12 +493,15 @@ public class EdicionFragment extends Fragment {
                 if(nuevaNota) {
                     partituraLDE.agregarNotaEnPosicion(new Nota(figurasMusicales.get(duracionIndex)), partituraIndex);
                     nuevaNota = false;
+                    Toast.makeText(getContext(), "Se añadió " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
                 } else{
+                    String notaAnterior = partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString();
                     if(!partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()){
                         partituraLDE.cambiarNotaEnPosicion(new Nota(figurasMusicales.get(duracionIndex)), partituraIndex);
                     }else{
                         partituraLDE.obtenerNotaEnPosicion(partituraIndex).setDuracion(figurasMusicales.get(duracionIndex));
                     }
+                    Toast.makeText(getContext(), "Se cambió " + notaAnterior + " por " + partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString(), Toast.LENGTH_SHORT).show();
                 }
 
                 fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
@@ -487,14 +509,21 @@ public class EdicionFragment extends Fragment {
             //Alteracion
             case 2:
                 if(!nuevaNota && !partituraLDE.isEmpty() && !partituraLDE.obtenerNotaEnPosicion(partituraIndex).isSilencio()){
+                    String notaAnterior = partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString();
                     if((alteracionIndex == 0 && alturaIndex != 2 && alturaIndex != 6)
                             || (alteracionIndex == 1 && alturaIndex != 0 && alturaIndex != 3)) {
                         partituraLDE.obtenerNotaEnPosicion(partituraIndex).setAlteracion(alteracionesMusicales.get(alteracionIndex));
                         fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
-                    } else if(alteracionIndex == 2){
+                        Toast.makeText(getContext(), "Se agregó " + alteracionesMusicales.get(alteracionIndex) + " a la nota " + notaAnterior, Toast.LENGTH_SHORT).show();
+                    } else if(alteracionIndex == 2 && partituraLDE.obtenerNotaEnPosicion(partituraIndex).getAlteracion() != null){
                         partituraLDE.obtenerNotaEnPosicion(partituraIndex).setAlteracion(null);
                         fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+                        Toast.makeText(getContext(), "Se removió la alteración de la nota " + notaAnterior, Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(getContext(), "No puede realizar esta acción", Toast.LENGTH_SHORT).show();
                     }
+                }else{
+                    Toast.makeText(getContext(), "No puede realizar esta acción", Toast.LENGTH_SHORT).show();
                 }
                 break;
             case 3:
@@ -507,6 +536,7 @@ public class EdicionFragment extends Fragment {
     public void eliminarNota(){
 
         if(!partituraLDE.isEmpty() && !nuevaNota){
+            String notaAnterior = partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString();
             partituraLDE.eliminarNotaEnPosicion(partituraIndex);
             if(partituraLDE.isEmpty()){
                 nuevaNota = true;
@@ -516,6 +546,7 @@ public class EdicionFragment extends Fragment {
                 partituraIndex--;
             }
             fe_tv_nota.setText(partituraLDE.obtenerNotaEnPosicion(partituraIndex).toString());
+            Toast.makeText(getContext(), "Se eliminó" + notaAnterior, Toast.LENGTH_SHORT).show();
         }
     }
 

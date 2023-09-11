@@ -56,7 +56,10 @@ public class JuegosActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
+        menu.findItem(R.id.mt_ajustes).setVisible(false);
         menu.findItem(R.id.mt_guardar).setVisible(false);
+        menu.findItem(R.id.mt_volver).setVisible(false);
+        menu.findItem(R.id.mt_salir).setVisible(false);
         return true;
     }
 
@@ -65,10 +68,6 @@ public class JuegosActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.mt_ajustes:
-                Intent intentAjustes = new Intent(this, AjustesActivity.class);
-                startActivity(intentAjustes);
-                break;
             case R.id.mt_info:
                 Intent intentInformacion = new Intent(this, InformacionActivity.class);
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.aj_fragmentContainerView)
@@ -92,6 +91,8 @@ public class JuegosActivity extends AppCompatActivity {
                 }
                 startActivity(intentInformacion);
                 break;
+            case R.id.mt_inicio:
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -142,20 +143,6 @@ public class JuegosActivity extends AppCompatActivity {
                 notas[nota].seekTo(notas[nota].getDuration());
             }
         }, notas[nota].getDuration()/(int) Math.pow(2, duracion));
-
-        /*
-        for(MediaPlayer mp: notas){
-            if(mp.isPlaying()){
-                mp.stop();
-                try {
-                    mp.prepare();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        notas[nota].start();
-         */
     }
 
     @Override
