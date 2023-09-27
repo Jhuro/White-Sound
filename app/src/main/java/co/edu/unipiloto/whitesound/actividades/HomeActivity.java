@@ -299,12 +299,15 @@ public class HomeActivity extends AppCompatActivity {
         //Añadir el nombre de los archivos a la lista partituras
         try {
             for (File archivo : archivos) {
-                this.archivos.add(archivo.getName());
-                FileInputStream fileInputStream = new FileInputStream(archivo);
-                ObjectInputStream objInputStream = new ObjectInputStream(fileInputStream);
-                partituras.add(objInputStream.readObject());
-                objInputStream.close();
-                fileInputStream.close();
+                if(archivo.getName().length()>=4 &&
+                        archivo.getName().substring(archivo.getName().length() - 4).equals("wsnd")){
+                    this.archivos.add(archivo.getName());
+                    FileInputStream fileInputStream = new FileInputStream(archivo);
+                    ObjectInputStream objInputStream = new ObjectInputStream(fileInputStream);
+                    partituras.add(objInputStream.readObject());
+                    objInputStream.close();
+                    fileInputStream.close();
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();

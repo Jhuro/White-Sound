@@ -37,6 +37,10 @@
         <item name="android:background">@drawable/bg_clr_2</item>
     </style>
 
+    <style name="fondo_popup_color_4" parent="Theme.WhiteSound">
+        <item name="android:background">@drawable/bg_clr_4</item>
+    </style>
+
     <style name="fondo_color_2" parent="Theme.WhiteSound">
         <item name="android:background">@color/color_fondo_2</item>
     </style>
